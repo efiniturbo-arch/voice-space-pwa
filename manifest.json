@@ -1,6 +1,6 @@
 {
-  "name": "Voice Report",
-  "short_name": "Voice",
+  "name": "Voice Events",
+  "short_name": "Voice Events",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#050816",

@@ -7,7 +7,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Voice Report</title>
+  <title>Voice Events</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -17,40 +17,56 @@
       <div class="brand">
         <div class="logo">◉</div>
         <div>
-          <div class="title">Voice Report</div>
-          <div class="subtitle">Космическая PWA-панель рапортов</div>
+          <div class="title">Voice Events</div>
+          <div class="subtitle">Космическая PWA-панель событий</div>
         </div>
       </div>
-      <div class="avatar">АВ</div>
+      <div class="profile">
+        <button class="avatar" id="avatarButton" aria-label="Открыть настройки">АВ</button>
+        <div class="settings-menu" id="settingsMenu">
+          <div class="user-card">
+            <div class="avatar big">АВ</div>
+            <div>
+              <div class="user-name">Антон Воропаев</div>
+              <div class="user-role">Администратор</div>
+            </div>
+          </div>
+          <button class="menu-item"><span class="menu-icon">⚙</span><span>Настройки</span></button>
+          <button class="menu-item"><span class="menu-icon">🔔</span><span>Уведомления</span></button>
+          <button class="menu-item"><span class="menu-icon">🌌</span><span>Тема интерфейса</span></button>
+          <button class="menu-item"><span class="menu-icon">👤</span><span>Профиль</span></button>
+          <div class="menu-separator"></div>
+          <button class="menu-item danger"><span class="menu-icon">↩</span><span>Выйти</span></button>
+        </div>
+      </div>
     </header>
 
     <main class="layout">
       <section class="panel">
         <nav class="tabs">
           <button class="tab active">Рабочий стол</button>
-          <button class="tab">История рапортов</button>
+          <button class="tab">История событий</button>
         </nav>
 
         <div class="card hero">
           <div>
-            <h1>Журнал рапортов</h1>
+            <h1>Журнал событий</h1>
             <p>19 июня 2026 г.</p>
           </div>
-          <button class="settings">Настройки</button>
+          <button class="settings">Фильтр</button>
         </div>
 
-        <div class="reports" id="reports"></div>
+        <div class="events" id="events"></div>
       </section>
 
       <section class="side">
         <div class="orbit"></div>
         <h2>Центр управления</h2>
-        <p>Статусы рапортов, контроль дедлайнов и голосовая отправка.</p>
-        <button class="primary">+ Новый рапорт</button>
+        <p>Статусы событий, контроль дедлайнов и голосовая фиксация.</p>
+        <button class="primary">+ Новое событие</button>
       </section>
     </main>
   </div>
-
   <script src="./app.js"></script>
 </body>
 </html>

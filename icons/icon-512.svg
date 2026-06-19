@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-<defs>
-<radialGradient id="g" cx="30%" cy="20%">
-<stop offset="0%" stop-color="#00ffd1"/>
-<stop offset="45%" stop-color="#00d4ff"/>
-<stop offset="100%" stop-color="#7b61ff"/>
-</radialGradient>
-</defs>
-<rect width="512" height="512" rx="120" fill="#050816"/>
-<circle cx="256" cy="256" r="164" fill="none" stroke="url(#g)" stroke-width="20"/>
-<circle cx="256" cy="256" r="86" fill="url(#g)" opacity=".85"/>
-<path d="M256 116c72 66 72 214 0 280c-72-66-72-214 0-280z" fill="none" stroke="#eef7ff" stroke-width="14" opacity=".9"/>
-<circle cx="372" cy="142" r="18" fill="#00ffd1"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><defs><radialGradient id="g" cx="30%" cy="20%"><stop offset="0%" stop-color="#00ffd1"/><stop offset="45%" stop-color="#00d4ff"/><stop offset="100%" stop-color="#7b61ff"/></radialGradient></defs><rect width="512" height="512" rx="120" fill="#050816"/><circle cx="256" cy="256" r="164" fill="none" stroke="url(#g)" stroke-width="20"/><circle cx="256" cy="256" r="86" fill="url(#g)" opacity=".85"/><text x="256" y="292" font-size="96" font-family="Arial, sans-serif" font-weight="800" text-anchor="middle" fill="#050816">VE</text></svg>
