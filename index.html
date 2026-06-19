@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#050816" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -14,13 +14,15 @@
 <body>
   <div class="app">
     <header class="topbar">
+      <button class="back-button" id="backButton">‹ Назад</button>
       <div class="brand">
         <div class="logo">◉</div>
         <div>
           <div class="title">Voice Events</div>
-          <div class="subtitle">Космическая PWA-панель событий</div>
+          <div class="subtitle" id="screenSubtitle">Журнал событий</div>
         </div>
       </div>
+
       <div class="profile">
         <button class="avatar" id="avatarButton" aria-label="Открыть настройки">АВ</button>
         <div class="settings-menu" id="settingsMenu">
@@ -41,7 +43,7 @@
       </div>
     </header>
 
-    <main class="layout">
+    <main class="layout" id="listScreen">
       <section class="panel">
         <nav class="tabs">
           <button class="tab active">Рабочий стол</button>
@@ -51,7 +53,7 @@
         <div class="card hero">
           <div>
             <h1>Журнал событий</h1>
-            <p>19 июня 2026 г.</p>
+            <p id="todayLabel"></p>
           </div>
           <button class="settings">Фильтр</button>
         </div>
@@ -62,11 +64,39 @@
       <section class="side">
         <div class="orbit"></div>
         <h2>Центр управления</h2>
-        <p>Статусы событий, контроль дедлайнов и голосовая фиксация.</p>
-        <button class="primary">+ Новое событие</button>
+        <p>Каждый час появляется новая карточка. Через 3 часа без заполнения — жёлтый статус, через 5 часов — красный.</p>
+        <button class="primary" id="addNowButton">+ Событие сейчас</button>
+      </section>
+    </main>
+
+    <main class="detail-screen hidden" id="detailScreen">
+      <section class="detail-card">
+        <div class="detail-head">
+          <div>
+            <div class="eyebrow">Карточка события</div>
+            <h1 id="detailTitle">Событие</h1>
+            <p id="detailStatus"></p>
+          </div>
+          <span class="status-pill" id="detailPill"></span>
+        </div>
+
+        <div class="composer">
+          <button class="round-action mic" id="recordButton">🎙</button>
+          <label class="round-action photo">
+            📷
+            <input type="file" accept="image/*" capture="environment" id="photoInput" hidden />
+          </label>
+          <div class="composer-text">
+            <b id="recordHint">Нажмите микрофон для записи</b>
+            <span>Голосовые и фото сохраняются внутри этой карточки как сообщения.</span>
+          </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
       </section>
     </main>
   </div>
+
   <script src="./app.js"></script>
 </body>
 </html>
