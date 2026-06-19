@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050816" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Voice Report</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">◉</div>
+        <div>
+          <div class="title">Voice Report</div>
+          <div class="subtitle">Космическая PWA-панель рапортов</div>
+        </div>
+      </div>
+      <div class="avatar">АВ</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <nav class="tabs">
+          <button class="tab active">Рабочий стол</button>
+          <button class="tab">История рапортов</button>
+        </nav>
+
+        <div class="card hero">
+          <div>
+            <h1>Журнал рапортов</h1>
+            <p>19 июня 2026 г.</p>
+          </div>
+          <button class="settings">Настройки</button>
+        </div>
+
+        <div class="reports" id="reports"></div>
+      </section>
+
+      <section class="side">
+        <div class="orbit"></div>
+        <h2>Центр управления</h2>
+        <p>Статусы рапортов, контроль дедлайнов и голосовая отправка.</p>
+        <button class="primary">+ Новый рапорт</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
