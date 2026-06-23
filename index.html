@@ -11,6 +11,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav-liquid.css">
+  <link rel="stylesheet" href="v9-theme.css">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -82,16 +83,20 @@
   </main>
 
   <main id="settings" class="screen hidden">
-    <section class="panel">
+    <section class="panel settings-panel">
       <h1>Настройки</h1>
       <label>IP server<input id="ip" placeholder="192.168.1.100"></label>
       <div class="cols"><label>Часы<input id="hh" type="number" min="0"></label><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
       <label class="switch">Уведомления<input id="notify" type="checkbox"></label>
       <h2>Дизайн приложения</h2>
-      <button class="theme" data-theme="theme-standard">Стандартный<small>Изначальный космический стиль</small></button>
-      <button class="theme" data-theme="theme-drive-hero">DriveInTech — синий полигон</button>
-      <button class="theme" data-theme="theme-drive-monitor">Drive Monitor — тёмный лайм</button>
-      <button class="theme" data-theme="theme-red-nebula">Red Nebula — красный</button>
+      <div class="theme-grid" aria-label="Выбор темы">
+        <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Синий и фиолетовый неон</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-drive-hero"><span class="theme-preview theme-preview-drive"><i></i></span><span class="theme-copy"><b>DriveInTech</b><small>Корпоративный техно стиль</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-drive-monitor"><span class="theme-preview theme-preview-monitor"><i></i></span><span class="theme-copy"><b>Drive Monitor</b><small>Мониторинг и лайм акценты</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-red-nebula"><span class="theme-preview theme-preview-red"><i></i></span><span class="theme-copy"><b>Red Nebula</b><small>Красное свечение и danger UI</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-water"><span class="theme-preview theme-preview-water"><i></i></span><span class="theme-copy"><b>Капли воды</b><small>Дождь, стекло и прозрачность</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-electric"><span class="theme-preview theme-preview-electric"><i></i></span><span class="theme-copy"><b>Электрический разряд</b><small>Синий и жёлтый заряд</small></span><span class="theme-check">✓</span></button>
+      </div>
     </section>
   </main>
 
