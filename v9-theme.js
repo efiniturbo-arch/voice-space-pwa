@@ -1,0 +1,1 @@
+(()=>{const sync=()=>{document.querySelectorAll('.theme-card').forEach(card=>card.classList.toggle('active',document.body.classList.contains(card.dataset.theme)))};document.addEventListener('click',e=>{if(e.target.closest('.theme-card'))requestAnimationFrame(sync)});new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class']});sync()})();
