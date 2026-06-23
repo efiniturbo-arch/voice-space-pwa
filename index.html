@@ -83,11 +83,11 @@
   </main>
 
   <main id="settings" class="screen hidden">
-    <section class="panel settings-panel">
-      <h1>Настройки</h1>
-      <label>IP server<input id="ip" placeholder="192.168.1.100"></label>
-      <div class="cols"><label>Часы<input id="hh" type="number" min="0"></label><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
-      <label class="switch">Уведомления<input id="notify" type="checkbox"></label>
+    <section class="panel settings-panel modal-content">
+      <h1 class="modal-title">Настройки</h1>
+      <div class="form-group"><label>IP server<input id="ip" placeholder="192.168.1.100"></label></div>
+      <div class="cols"><div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div><div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div></div>
+      <div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div>
       <h2>Дизайн приложения</h2>
       <div class="theme-grid" aria-label="Выбор темы">
         <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Синий и фиолетовый неон</small></span><span class="theme-check">✓</span></button>
@@ -101,11 +101,11 @@
   </main>
 
   <div id="sheet" class="sheet hidden">
-    <div>
-      <h2>Фильтр событий <button id="x">×</button></h2>
-      <label>Дата<input id="fd" type="date"></label>
-      <label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label>
-      <div class="cols"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
+    <div class="modal-content">
+      <h2 class="modal-title">Фильтр событий <button id="x">×</button></h2>
+      <div class="form-group"><label>Дата<input id="fd" type="date"></label></div>
+      <div class="form-group"><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label></div>
+      <div class="form-actions"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
     </div>
   </div>
 
