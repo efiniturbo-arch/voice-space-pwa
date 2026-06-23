@@ -11,6 +11,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav-liquid.css">
+  <link rel="stylesheet" href="v9-theme.css">
+  <link rel="stylesheet" href="spacing-polish.css">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -47,12 +49,12 @@
         <b id="pill" class="pill"></b>
       </div>
       <div id="msgs" class="msgs"></div>
-      <div class="composer">
-        <button id="rec" class="water-action big">🎙</button>
-        <label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
-        <span id="hint">Нажмите для записи</span>
-      </div>
     </section>
+    <div class="composer">
+      <button id="rec" class="water-action big">🎙</button>
+      <label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
+      <span id="hint">Нажмите для записи</span>
+    </div>
   </main>
 
   <main id="tasks" class="screen hidden">
@@ -69,8 +71,8 @@
     <section class="panel chat">
       <h1>Чат</h1>
       <div id="chatList" class="chatlist"></div>
-      <div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div>
     </section>
+    <div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div>
   </main>
 
   <main id="docs" class="screen hidden">
@@ -82,47 +84,52 @@
   </main>
 
   <main id="settings" class="screen hidden">
-    <section class="panel">
-      <h1>Настройки</h1>
-      <label>IP server<input id="ip" placeholder="192.168.1.100"></label>
-      <div class="cols"><label>Часы<input id="hh" type="number" min="0"></label><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
-      <label class="switch">Уведомления<input id="notify" type="checkbox"></label>
+    <section class="panel settings-panel modal-content">
+      <h1 class="modal-title">Настройки</h1>
+      <div class="form-group"><label>IP server<input id="ip" placeholder="192.168.1.100"></label></div>
+      <div class="cols"><div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div><div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div></div>
+      <div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div>
       <h2>Дизайн приложения</h2>
-      <button class="theme" data-theme="theme-standard">Стандартный<small>Изначальный космический стиль</small></button>
-      <button class="theme" data-theme="theme-drive-hero">DriveInTech — синий полигон</button>
-      <button class="theme" data-theme="theme-drive-monitor">Drive Monitor — тёмный лайм</button>
-      <button class="theme" data-theme="theme-red-nebula">Red Nebula — красный</button>
+      <div class="theme-grid" aria-label="Выбор темы">
+        <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Синий и фиолетовый неон</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-drive-hero"><span class="theme-preview theme-preview-drive"><i></i></span><span class="theme-copy"><b>DriveInTech</b><small>Корпоративный техно стиль</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-drive-monitor"><span class="theme-preview theme-preview-monitor"><i></i></span><span class="theme-copy"><b>Drive Monitor</b><small>Мониторинг и лайм акценты</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-red-nebula"><span class="theme-preview theme-preview-red"><i></i></span><span class="theme-copy"><b>Red Nebula</b><small>Красное свечение и danger UI</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-water"><span class="theme-preview theme-preview-water"><i></i></span><span class="theme-copy"><b>Капли воды</b><small>Дождь, стекло и прозрачность</small></span><span class="theme-check">✓</span></button>
+        <button class="theme theme-card" data-theme="theme-electric"><span class="theme-preview theme-preview-electric"><i></i></span><span class="theme-copy"><b>Электрический разряд</b><small>Синий и жёлтый заряд</small></span><span class="theme-check">✓</span></button>
+      </div>
     </section>
   </main>
 
   <div id="sheet" class="sheet hidden">
-    <div>
-      <h2>Фильтр событий <button id="x">×</button></h2>
-      <label>Дата<input id="fd" type="date"></label>
-      <label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label>
-      <div class="cols"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
+    <div class="modal-content">
+      <h2 class="modal-title">Фильтр событий <button id="x">×</button></h2>
+      <div class="form-group"><label>Дата<input id="fd" type="date"></label></div>
+      <div class="form-group"><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label></div>
+      <div class="form-actions"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
     </div>
   </div>
 
   <nav id="nav" aria-label="Основная навигация">
     <span class="nav-liquid" aria-hidden="true"></span>
-    <button class="active" data-go="events" aria-label="Events">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">◉</span><span class="nav-label">Events</span></span></span>
+    <button class="active" data-go="events" aria-label="События">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">◉</span><span class="nav-label">События</span></span></span>
     </button>
-    <button data-go="tasks" aria-label="Tasks">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">☑</span><span class="nav-label">Tasks</span></span></span>
+    <button data-go="tasks" aria-label="Задачи">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">☑</span><span class="nav-label">Задачи</span></span></span>
     </button>
-    <button data-go="chat" aria-label="Chat">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span><span class="nav-label">Chat</span></span></span>
+    <button data-go="chat" aria-label="Чат">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span><span class="nav-label">Чат</span></span></span>
     </button>
-    <button data-go="docs" aria-label="Documents">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">▣</span><span class="nav-label">Documents</span></span></span>
+    <button data-go="docs" aria-label="Документы">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">▣</span><span class="nav-label">Документы</span></span></span>
     </button>
-    <button data-go="settings" aria-label="Settings">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">⚙</span><span class="nav-label">Settings</span></span></span>
+    <button data-go="settings" aria-label="Настройки">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">⚙</span><span class="nav-label">Настройки</span></span></span>
     </button>
   </nav>
 
   <script src="app.js"></script>
+  <script src="v9-theme.js"></script>
 </body>
 </html>
