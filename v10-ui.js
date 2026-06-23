@@ -1,6 +1,7 @@
 (() => {
   const APP_KEY = 'voice-events-v7';
   const APP_VERSION = 'v11.0.0 Water Glass Pro';
+  const ASSET_VERSION = '24';
 
   const loadCss = href => {
     if (!document.querySelector(`link[href="${href}"]`)) {
@@ -10,8 +11,8 @@
       document.head.appendChild(link);
     }
   };
-  loadCss('splash.css');
-  loadCss('v10-ui.css');
+  loadCss(`splash.css?v=${ASSET_VERSION}`);
+  loadCss(`v10-ui.css?v=${ASSET_VERSION}`);
 
   const $ = id => document.getElementById(id);
   const readState = () => {
