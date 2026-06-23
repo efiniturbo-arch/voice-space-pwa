@@ -1,1 +1,128 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050816"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Voice Events</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body class="theme-standard"><header class="topbar"><button id="back" class="back">‹ Назад</button><div class="brand"><div class="mark">VE</div><div><b>Voice Events</b><small id="subtitle">Журнал событий</small></div></div><button id="avatar" class="avatar">АВ</button></header><div id="profile" class="profile-menu"><b>Антон Воропаев</b><small>Администратор</small><button data-go="settings">⚙ Настройки</button><button data-go="settings">🌌 Сменить тему</button><button>↩ Выйти</button></div><main id="events" class="screen"><section class="panel"><div class="hero"><div><h1>Журнал событий</h1><button id="dateBtn" class="ghost">📅 <span id="today"></span></button></div><button id="filterBtn" class="ghost">▽ Фильтр <span id="badge"></span></button></div><div id="eventList" class="list"></div></section></main><main id="detail" class="screen hidden"><section class="panel detail"><div class="head"><div><small>КАРТОЧКА СОБЫТИЯ</small><h1 id="dt"></h1><p id="ds"></p></div><b id="pill" class="pill"></b></div><div id="msgs" class="msgs"></div><div class="composer"><button id="rec" class="water-action big">🎙</button><label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label><span id="hint">Нажмите для записи</span></div></section></main><main id="tasks" class="screen hidden"><section class="panel"><h1>Задачи</h1><textarea id="taskText" placeholder="Напишите задачу..."></textarea><label class="ghost wide">📷 Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label><button id="addTask" class="primary wide">Добавить задачу</button><div id="taskList" class="list"></div></section></main><main id="chat" class="screen hidden"><section class="panel chat"><h1>Чат</h1><div id="chatList" class="chatlist"></div><div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div></section></main><main id="docs" class="screen hidden"><section class="panel"><h1>Документы</h1><label class="upload">＋ Добавить файл<input id="docIn" type="file" multiple hidden></label><div id="docList" class="docs"></div></section></main><main id="settings" class="screen hidden"><section class="panel"><h1>Настройки</h1><label>IP server<input id="ip" placeholder="192.168.1.100"></label><div class="cols"><label>Часы<input id="hh" type="number" min="0"></label><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div><label class="switch">Уведомления<input id="notify" type="checkbox"></label><h2>Дизайн приложения</h2><button class="theme" data-theme="theme-standard">Стандартный<small>Изначальный космический стиль</small></button><button class="theme" data-theme="theme-drive-hero">DriveInTech — синий полигон</button><button class="theme" data-theme="theme-drive-monitor">Drive Monitor — тёмный лайм</button><button class="theme" data-theme="theme-red-nebula">Red Nebula — красный</button></section></main><div id="sheet" class="sheet hidden"><div><h2>Фильтр событий <button id="x">×</button></h2><label>Дата<input id="fd" type="date"></label><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label><div class="cols"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div></div></div><nav id="nav"><button class="active" data-go="events"><i class="drop">◉</i><span>События</span></button><button data-go="tasks"><i class="drop">☑</i><span>Задачи</span></button><button data-go="chat"><i class="drop">💬</i><em id="chatBadge">3</em><span>Чат</span></button><button data-go="docs"><i class="drop">▣</i><span>Документы</span></button><button data-go="settings"><i class="drop">⚙</i><span>Настройки</span></button></nav><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050816">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Voice Events</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav-liquid.css">
+</head>
+<body class="theme-standard">
+  <header class="topbar">
+    <button id="back" class="back">‹ Назад</button>
+    <div class="brand">
+      <div class="mark">VE</div>
+      <div><b>Voice Events</b><small id="subtitle">Журнал событий</small></div>
+    </div>
+    <button id="avatar" class="avatar">АВ</button>
+  </header>
+
+  <div id="profile" class="profile-menu">
+    <b>Антон Воропаев</b>
+    <small>Администратор</small>
+    <button data-go="settings">⚙ Настройки</button>
+    <button data-go="settings">🌌 Сменить тему</button>
+    <button>↩ Выйти</button>
+  </div>
+
+  <main id="events" class="screen">
+    <section class="panel">
+      <div class="hero">
+        <div><h1>Журнал событий</h1><button id="dateBtn" class="ghost">📅 <span id="today"></span></button></div>
+        <button id="filterBtn" class="ghost">▽ Фильтр <span id="badge"></span></button>
+      </div>
+      <div id="eventList" class="list"></div>
+    </section>
+  </main>
+
+  <main id="detail" class="screen hidden">
+    <section class="panel detail">
+      <div class="head">
+        <div><small>КАРТОЧКА СОБЫТИЯ</small><h1 id="dt"></h1><p id="ds"></p></div>
+        <b id="pill" class="pill"></b>
+      </div>
+      <div id="msgs" class="msgs"></div>
+      <div class="composer">
+        <button id="rec" class="water-action big">🎙</button>
+        <label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
+        <span id="hint">Нажмите для записи</span>
+      </div>
+    </section>
+  </main>
+
+  <main id="tasks" class="screen hidden">
+    <section class="panel">
+      <h1>Задачи</h1>
+      <textarea id="taskText" placeholder="Напишите задачу..."></textarea>
+      <label class="ghost wide">📷 Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label>
+      <button id="addTask" class="primary wide">Добавить задачу</button>
+      <div id="taskList" class="list"></div>
+    </section>
+  </main>
+
+  <main id="chat" class="screen hidden">
+    <section class="panel chat">
+      <h1>Чат</h1>
+      <div id="chatList" class="chatlist"></div>
+      <div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div>
+    </section>
+  </main>
+
+  <main id="docs" class="screen hidden">
+    <section class="panel">
+      <h1>Документы</h1>
+      <label class="upload">＋ Добавить файл<input id="docIn" type="file" multiple hidden></label>
+      <div id="docList" class="docs"></div>
+    </section>
+  </main>
+
+  <main id="settings" class="screen hidden">
+    <section class="panel">
+      <h1>Настройки</h1>
+      <label>IP server<input id="ip" placeholder="192.168.1.100"></label>
+      <div class="cols"><label>Часы<input id="hh" type="number" min="0"></label><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
+      <label class="switch">Уведомления<input id="notify" type="checkbox"></label>
+      <h2>Дизайн приложения</h2>
+      <button class="theme" data-theme="theme-standard">Стандартный<small>Изначальный космический стиль</small></button>
+      <button class="theme" data-theme="theme-drive-hero">DriveInTech — синий полигон</button>
+      <button class="theme" data-theme="theme-drive-monitor">Drive Monitor — тёмный лайм</button>
+      <button class="theme" data-theme="theme-red-nebula">Red Nebula — красный</button>
+    </section>
+  </main>
+
+  <div id="sheet" class="sheet hidden">
+    <div>
+      <h2>Фильтр событий <button id="x">×</button></h2>
+      <label>Дата<input id="fd" type="date"></label>
+      <label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label>
+      <div class="cols"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
+    </div>
+  </div>
+
+  <nav id="nav" aria-label="Основная навигация">
+    <span class="nav-liquid" aria-hidden="true"></span>
+    <button class="active" data-go="events" aria-label="Events">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">◉</span><span class="nav-label">События</span></span></span>
+    </button>
+    <button data-go="tasks" aria-label="Tasks">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">☑</span><span class="nav-label">Задачи</span></span></span>
+    </button>
+    <button data-go="chat" aria-label="Chat">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span><span class="nav-label">Чат</span></span></span>
+    </button>
+    <button data-go="docs" aria-label="Documents">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">▣</span><span class="nav-label">Документы</span></span></span>
+    </button>
+    <button data-go="settings" aria-label="Settings">
+      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">⚙</span><span class="nav-label">Настройки</span></span></span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
