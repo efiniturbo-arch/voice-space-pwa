@@ -1,4 +1,7 @@
 (() => {
+  const APP_KEY = 'voice-events-v7';
+  const APP_VERSION = 'v11.0.0 Water Glass Pro';
+
   const loadCss = href => {
     if (!document.querySelector(`link[href="${href}"]`)) {
       const link = document.createElement('link');
@@ -7,13 +10,40 @@
       document.head.appendChild(link);
     }
   };
+  loadCss('splash.css');
   loadCss('v10-ui.css');
 
   const $ = id => document.getElementById(id);
+  const readState = () => {
+    try { return JSON.parse(localStorage.getItem(APP_KEY) || 'null'); }
+    catch (_) { return null; }
+  };
+  const writeState = state => localStorage.setItem(APP_KEY, JSON.stringify(state));
+
+  const patchStorage = () => {
+    if (window.__voiceEventsV11StoragePatch) return;
+    window.__voiceEventsV11StoragePatch = true;
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    localStorage.setItem = (key, value) => {
+      if (key === APP_KEY) {
+        try {
+          const previous = JSON.parse(localStorage.getItem(APP_KEY) || '{}');
+          const next = JSON.parse(value);
+          next.settings = next.settings || {};
+          const prevSettings = previous.settings || {};
+          if (prevSettings.login && !next.settings.login) next.settings.login = prevSettings.login;
+          if (prevSettings.password && !next.settings.password) next.settings.password = prevSettings.password;
+          next.settings.appVersion = APP_VERSION;
+          value = JSON.stringify(next);
+        } catch (_) {}
+      }
+      originalSetItem(key, value);
+    };
+  };
 
   const setTransportTab = () => {
-    const settingsButton = document.querySelector('#nav button[data-go="settings"]');
-    if (!settingsButton || settingsButton.dataset.go === 'transport') return;
+    const settingsButton = document.querySelector('#nav button[data-go="settings"], #nav button[data-go="transport"]');
+    if (!settingsButton) return;
     settingsButton.dataset.go = 'transport';
     settingsButton.setAttribute('aria-label', 'Транспорт');
     const icon = settingsButton.querySelector('.nav-icon');
@@ -27,19 +57,19 @@
     const main = document.createElement('main');
     main.id = 'transport';
     main.className = 'screen hidden';
-    main.innerHTML = `<section class="panel"><h1>Транспорт</h1><p>Мониторинг техники и статусов</p><div class="transport-grid">
-      <div class="transport-card"><span class="transport-icon">🚚</span><div><b>ТС-001 / Буровая</b><div class="transport-state transport-online">Онлайн · 12 км/ч</div></div><span>›</span></div>
+    main.innerHTML = `<section class="panel transport-panel"><h1>Транспорт</h1><p>Мониторинг техники и статусов</p><div class="transport-grid">
+      <div class="transport-card"><span class="transport-icon">▣</span><div><b>ТС-001 / Буровая</b><div class="transport-state transport-online">Онлайн · 12 км/ч</div></div><span>›</span></div>
       <div class="transport-card"><span class="transport-icon">⛽</span><div><b>Топливо</b><div class="transport-state">4 бака · 72%</div></div><span>›</span></div>
-      <div class="transport-card"><span class="transport-icon">📍</span><div><b>Геозоны</b><div class="transport-state">Объект №23 · в зоне</div></div><span>›</span></div>
-      <div class="transport-card"><span class="transport-icon">⚠</span><div><b>События транспорта</b><div class="transport-state">Нет критичных уведомлений</div></div><span>›</span></div>
+      <div class="transport-card"><span class="transport-icon">⌖</span><div><b>Геозоны</b><div class="transport-state">Объект №23 · в зоне</div></div><span>›</span></div>
+      <div class="transport-card"><span class="transport-icon">!</span><div><b>События транспорта</b><div class="transport-state">Нет критичных уведомлений</div></div><span>›</span></div>
     </div></section>`;
     const nav = $('nav');
     document.body.insertBefore(main, nav);
   };
 
   const patchGo = () => {
-    if (window.__voiceEventsV10GoPatch) return;
-    window.__voiceEventsV10GoPatch = true;
+    if (window.__voiceEventsV11GoPatch) return;
+    window.__voiceEventsV11GoPatch = true;
     document.addEventListener('click', event => {
       const button = event.target.closest('#nav button[data-go="transport"]');
       if (!button) return;
@@ -58,8 +88,9 @@
   const enhanceAvatar = () => {
     const avatar = $('avatar');
     const profile = $('profile');
-    if (!avatar || !profile || avatar.dataset.v10Avatar) return;
-    avatar.dataset.v10Avatar = '1';
+    if (!avatar || !profile || avatar.dataset.v11Avatar) return;
+    avatar.dataset.v11Avatar = '1';
+    avatar.setAttribute('aria-label', 'Профиль и настройки');
     avatar.addEventListener('click', () => {
       avatar.classList.toggle('gear-mode');
       setTimeout(() => avatar.classList.remove('gear-mode'), 900);
@@ -75,66 +106,111 @@
 
   const rebuildThemeCards = () => {
     const grid = document.querySelector('.theme-grid');
-    if (!grid || grid.dataset.v10Themes) return;
-    grid.dataset.v10Themes = '1';
-    grid.innerHTML = `
-      <button class="theme theme-card" data-theme="theme-drive-hero"><span class="theme-preview theme-preview-drive"><i></i></span><span class="theme-copy"><b>DriveInTech</b><small>Техно стиль, зелёный неон</small></span><span class="theme-check">✓</span></button>
-      <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Космическая глубина</small></span><span class="theme-check">✓</span></button>
-      <button class="theme theme-card" data-theme="theme-water"><span class="theme-preview theme-preview-water"><i></i></span><span class="theme-copy"><b>Капли воды</b><small>Стекло и вода</small></span><span class="theme-check">✓</span></button>
-      <button class="theme theme-card" data-theme="theme-electric"><span class="theme-preview theme-preview-electric"><i></i></span><span class="theme-copy"><b>Электрический разряд</b><small>Энергия и молнии</small></span><span class="theme-check">✓</span></button>`;
-    grid.querySelectorAll('.theme-card').forEach(card => {
-      card.addEventListener('click', () => {
-        try {
-          const raw = localStorage.getItem('voice-events-v7');
-          const state = raw ? JSON.parse(raw) : null;
-          if (state?.settings) {
-            state.settings.theme = card.dataset.theme;
-            localStorage.setItem('voice-events-v7', JSON.stringify(state));
-          }
-        } catch (_) {}
-        document.body.className = card.dataset.theme;
-        requestAnimationFrame(() => grid.querySelectorAll('.theme-card').forEach(c => c.classList.toggle('active', c === card)));
-      });
+    if (!grid || grid.dataset.v11Themes) return;
+    grid.dataset.v11Themes = '1';
+    const themes = [
+      ['theme-drive-hero', 'DriveInTech', 'Корпоративное стекло и техно-свет'],
+      ['theme-standard', 'Космос', 'Космическая глубина'],
+      ['theme-water', 'Капли воды', 'Water Glass Pro'],
+      ['theme-electric', 'Электрический разряд', 'Синий и жёлтый заряд'],
+      ['theme-red-nebula', 'Red Nebula', 'Красное свечение и danger UI']
+    ];
+    const byTheme = new Map(Array.from(grid.querySelectorAll('.theme-card')).map(card => [card.dataset.theme, card]));
+    themes.forEach(([theme, title, note], index) => {
+      const card = byTheme.get(theme);
+      if (!card) return;
+      card.hidden = false;
+      card.style.display = '';
+      card.style.order = String(index + 1);
+      const titleEl = card.querySelector('.theme-copy b');
+      const noteEl = card.querySelector('.theme-copy small');
+      if (titleEl) titleEl.textContent = title;
+      if (noteEl) noteEl.textContent = note;
+      grid.appendChild(card);
     });
+    const monitor = byTheme.get('theme-drive-monitor');
+    if (monitor) monitor.hidden = true;
   };
 
-  const showDualSplash = () => {
-    localStorage.removeItem('voice-events-splash-voropaev-v1');
+  const syncCredentials = () => {
+    const state = readState();
+    const login = state?.settings?.login || '';
+    const password = state?.settings?.password || '';
+    ['profileLogin','settingsLogin'].forEach(id => { const el = $(id); if (el && el.value !== login) el.value = login; });
+    ['profilePassword','settingsPassword'].forEach(id => { const el = $(id); if (el && el.value !== password) el.value = password; });
+  };
+
+  const saveCredentials = () => {
+    const state = readState();
+    if (!state?.settings) return;
+    const login = $('settingsLogin')?.value ?? $('profileLogin')?.value ?? '';
+    const password = $('settingsPassword')?.value ?? $('profilePassword')?.value ?? '';
+    state.settings.login = login;
+    state.settings.password = password;
+    state.settings.appVersion = APP_VERSION;
+    writeState(state);
+    syncCredentials();
+  };
+
+  const showUpdateSplash = () => {
     document.getElementById('startupSplash')?.remove();
     const splash = document.createElement('div');
     splash.id = 'startupSplash';
+    splash.className = 'water-update-splash';
     splash.innerHTML = `<div class="splash-stars"></div><div class="splash-orbit"></div><div class="splash-earth"></div><div class="splash-flare"></div><div class="splash-core"><div class="splash-logo">VOROP<span>A</span>EV</div><div class="splash-subtitle">Digital Transport Systems</div></div>`;
     document.body.prepend(splash);
-    setTimeout(() => {
-      const core = splash.querySelector('.splash-core');
-      core.classList.add('splash-phase-out');
+    const core = splash.querySelector('.splash-core');
+    const phases = [
+      `<div class="splash-logo">VOROP<span>A</span>EV</div><div class="splash-subtitle">Digital Transport Systems</div>`,
+      `<div class="drive-logo-splash">DRIVE<small>in tech</small></div><div class="splash-subtitle splash-visible">Industrial Intelligence</div>`,
+      `<div class="voice-logo-splash">Voice Events</div><div class="splash-subtitle splash-visible">Water Glass Pro</div>`
+    ];
+    phases.slice(1).forEach((html, index) => {
       setTimeout(() => {
-        core.classList.remove('splash-phase-out');
-        core.innerHTML = `<div class="drive-logo-splash">DRIVE<small>in tech</small></div><div class="splash-subtitle" style="opacity:1">Voice Events Platform</div>`;
-      }, 460);
-    }, 1450);
+        core.classList.add('splash-phase-out');
+        setTimeout(() => {
+          core.innerHTML = html;
+          core.classList.remove('splash-phase-out');
+        }, 420);
+      }, 1350 + index * 1350);
+    });
     setTimeout(() => {
       splash.classList.add('hide');
       setTimeout(() => splash.remove(), 650);
-    }, 3400);
+    }, 4700);
+  };
+
+  const forceAppUpdate = () => {
+    if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistration().then(reg => reg?.update());
+    if ('caches' in window) caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('voice-events-pwa-')).map(key => caches.delete(key))));
+    showUpdateSplash();
+    setTimeout(() => window.location.reload(), 5200);
   };
 
   const enhanceSettings = () => {
     const panel = document.querySelector('#settings .panel');
-    if (!panel || panel.querySelector('.settings-version')) return;
-    const version = document.createElement('div');
-    version.className = 'settings-version';
-    version.innerHTML = `<div class="version-row"><b>Версия приложения</b><span>v10.0.0</span></div><button id="updateAppButton" class="primary" type="button">Обновить приложение</button>`;
-    panel.appendChild(version);
-    version.querySelector('#updateAppButton').addEventListener('click', () => {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistration().then(reg => reg?.update());
-      }
-      showDualSplash();
-    });
+    if (!panel) return;
+    if (!panel.querySelector('.settings-credentials')) {
+      const credentials = document.createElement('div');
+      credentials.className = 'settings-credentials';
+      credentials.innerHTML = `<h2>Доступ</h2><div class="form-group"><label>Логин<input id="settingsLogin" autocomplete="username" placeholder="Введите логин"></label></div><div class="form-group"><label>Пароль<input id="settingsPassword" autocomplete="current-password" type="password" placeholder="Введите пароль"></label></div>`;
+      const designTitle = Array.from(panel.querySelectorAll('h2')).find(h => h.textContent.includes('Дизайн'));
+      panel.insertBefore(credentials, designTitle || null);
+      credentials.querySelectorAll('input').forEach(input => input.addEventListener('change', saveCredentials));
+    }
+    if (!panel.querySelector('.settings-version')) {
+      const version = document.createElement('div');
+      version.className = 'settings-version';
+      version.innerHTML = `<div class="version-row"><b>Версия приложения</b><span>${APP_VERSION}</span></div><button id="updateAppButton" class="primary" type="button">Обновить приложение</button>`;
+      panel.appendChild(version);
+      version.querySelector('#updateAppButton').addEventListener('click', forceAppUpdate);
+    }
+    ['profileLogin','profilePassword'].forEach(id => $(id)?.addEventListener('change', saveCredentials));
+    syncCredentials();
   };
 
   const init = () => {
+    patchStorage();
     setTransportTab();
     ensureTransportScreen();
     patchGo();
