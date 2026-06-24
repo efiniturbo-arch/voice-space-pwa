@@ -9,12 +9,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Voice Events</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=10.3.0">
-  <link rel="stylesheet" href="nav-liquid.css?v=10.3.0">
-  <link rel="stylesheet" href="v9-theme.css?v=10.3.0">
-  <link rel="stylesheet" href="spacing-polish.css?v=10.3.0">
-  <link rel="stylesheet" href="v10-restart.css?v=10.3.0">
-  <link rel="stylesheet" href="v10-filter-split.css?v=10.3.0">
+  <link rel="stylesheet" href="style.css?v=10.4.0">
+  <link rel="stylesheet" href="nav-liquid.css?v=10.4.0">
+  <link rel="stylesheet" href="v9-theme.css?v=10.4.0">
+  <link rel="stylesheet" href="spacing-polish.css?v=10.4.0">
+  <link rel="stylesheet" href="v10-restart.css?v=10.4.0">
+  <link rel="stylesheet" href="v10-filter-split.css?v=10.4.0">
+  <link rel="stylesheet" href="v10-action-panel.css?v=10.4.0">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -81,7 +82,12 @@
       <h1>Чат</h1>
       <div id="chatList" class="chatlist"></div>
     </section>
-    <div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div>
+    <div class="chatbar">
+      <button id="chatMic" class="water-action big chat-mic">🎙</button>
+      <label class="water-action">📷<input id="chatPhoto" type="file" accept="image/*" capture="environment" hidden></label>
+      <input id="chatText" placeholder="Введите сообщение...">
+      <button id="send">➤</button>
+    </div>
   </main>
 
   <main id="docs" class="screen hidden">
@@ -129,37 +135,8 @@
     </section>
   </main>
 
-  <div id="dateSheet" class="sheet hidden">
-    <div class="modal-content">
-      <h2 class="modal-title">Выбор даты <button id="dateX">×</button></h2>
-      <p class="filter-mini-note">Левая кнопка меняет только дату журнала.</p>
-      <div class="form-group"><label>Дата<input id="fdOnly" type="date"></label></div>
-      <div class="form-actions"><button id="dateReset" class="ghost">Сбросить</button><button id="dateApply" class="primary">Применить</button></div>
-    </div>
-  </div>
-
-  <div id="statusSheet" class="sheet hidden">
-    <div class="modal-content">
-      <h2 class="modal-title">Состояние карточки <button id="statusX">×</button></h2>
-      <p class="filter-mini-note">Правая кнопка меняет только состояние карточки.</p>
-      <div class="filter-modal-list">
-        <button class="status-choice" data-status="all">Показать все</button>
-        <button class="status-choice" data-status="filled">Заполнено</button>
-        <button class="status-choice" data-status="wait">Ожидает</button>
-        <button class="status-choice" data-status="warning">Внимание</button>
-        <button class="status-choice" data-status="danger">Просрочено</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="sheet" class="sheet hidden">
-    <div class="modal-content">
-      <h2 class="modal-title">Фильтр событий <button id="x">×</button></h2>
-      <div class="form-group"><label>Дата<input id="fd" type="date"></label></div>
-      <div class="form-group"><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label></div>
-      <div class="form-actions"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
-    </div>
-  </div>
+  <div id="dateSheet" class="sheet hidden"><div class="modal-content"><h2 class="modal-title">Выбор даты <button id="dateX">×</button></h2><p class="filter-mini-note">Левая кнопка меняет только дату журнала.</p><div class="form-group"><label>Дата<input id="fdOnly" type="date"></label></div><div class="form-actions"><button id="dateReset" class="ghost">Сбросить</button><button id="dateApply" class="primary">Применить</button></div></div></div>
+  <div id="statusSheet" class="sheet hidden"><div class="modal-content"><h2 class="modal-title">Состояние карточки <button id="statusX">×</button></h2><p class="filter-mini-note">Правая кнопка меняет только состояние карточки.</p><div class="filter-modal-list"><button class="status-choice" data-status="all">Показать все</button><button class="status-choice" data-status="filled">Заполнено</button><button class="status-choice" data-status="wait">Ожидает</button><button class="status-choice" data-status="warning">Внимание</button><button class="status-choice" data-status="danger">Просрочено</button></div></div></div>
 
   <div id="taskComposer" class="task-composer with-send">
     <button id="taskMic" class="water-action big task-mic">🎙</button>
@@ -176,7 +153,7 @@
     <button data-go="transport" aria-label="Транспорт"><span class="nav-orb"><span class="nav-icon">▰</span></span><span class="nav-label">Транспорт</span></button>
   </nav>
 
-  <script src="app.js?v=10.3.0"></script>
-  <script src="v9-theme.js?v=10.3.0"></script>
+  <script src="app.js?v=10.4.0"></script>
+  <script src="v9-theme.js?v=10.4.0"></script>
 </body>
 </html>
