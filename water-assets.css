@@ -1,0 +1,202 @@
+/* v21 Water Rebuild: reusable water surfaces, droplets and icon assets */
+body.theme-water {
+  --water-asset-bg: url("./assets/water/water-bg-main.jpg");
+  --water-asset-header: url("./assets/water/water-bg-header.jpg");
+  --water-asset-date: url("./assets/water/water-btn-date.png");
+  --water-asset-status: url("./assets/water/water-btn-status.png");
+  --water-asset-card-normal: url("./assets/water/water-card-normal.png");
+  --water-asset-card-warning: url("./assets/water/water-card-warning.png");
+  --water-asset-card-danger: url("./assets/water/water-card-danger.png");
+  --water-asset-card-done: url("./assets/water/water-card-done.png");
+  --water-asset-dock: url("./assets/water/water-nav-dock.png");
+  --water-asset-mic: url("./assets/water/water-orb-mic.png");
+  --water-asset-camera: url("./assets/water/water-orb-camera.png");
+  --water-ink: #edfaff;
+  --water-muted: #a9c8d6;
+  --water-cyan: #4dd7ff;
+  --water-cyan-soft: rgba(77, 215, 255, .3);
+  --water-line: rgba(214, 246, 255, .36);
+  --water-glass: rgba(118, 183, 207, .14);
+  --water-glass-deep: rgba(5, 28, 40, .76);
+  --water-shadow: rgba(0, 9, 15, .62);
+}
+
+body.theme-water .water-drop {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 31% 18%, rgba(255, 255, 255, .98) 0 3%, rgba(255, 255, 255, .38) 4% 11%, transparent 19%),
+    radial-gradient(circle at 66% 70%, rgba(77, 215, 255, .26), transparent 39%),
+    linear-gradient(155deg, rgba(228, 249, 255, .3), rgba(83, 159, 188, .12) 35%, rgba(5, 31, 44, .82) 82%);
+  border: 1px solid rgba(222, 249, 255, .54);
+  box-shadow:
+    inset 9px 12px 22px rgba(255, 255, 255, .16),
+    inset -12px -16px 25px rgba(0, 12, 22, .36),
+    0 13px 27px rgba(0, 8, 15, .5);
+}
+
+body.theme-water .water-drop-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+body.theme-water .water-drop-active {
+  opacity: 0;
+}
+
+body.theme-water #nav button.active .water-drop-idle {
+  opacity: 0;
+}
+
+body.theme-water #nav button.active .water-drop-active {
+  opacity: 1;
+}
+
+body.theme-water .water-drop::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  z-index: -1;
+  background: conic-gradient(from 110deg, transparent 0 34%, rgba(255, 255, 255, .28) 39%, transparent 47% 100%);
+  animation: waterShimmer 5.6s linear infinite;
+}
+
+body.theme-water .water-drop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .2;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, .75) 0 .7px, transparent .9px),
+    radial-gradient(circle, rgba(77, 215, 255, .45) 0 .6px, transparent .8px);
+  background-position: 0 0, 7px 9px;
+  background-size: 13px 15px, 17px 19px;
+  mix-blend-mode: screen;
+  animation: waterNoise 3.8s steps(4) infinite;
+}
+
+body.theme-water .water-icon {
+  position: relative;
+  width: 27px;
+  height: 27px;
+  display: block;
+  color: currentColor;
+}
+
+body.theme-water .water-icon::before,
+body.theme-water .water-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+body.theme-water .water-icon-events::before {
+  inset: 3px 4px;
+  border: 2px solid currentColor;
+  border-radius: 7px;
+}
+
+body.theme-water .water-icon-events::after {
+  left: 8px;
+  top: 9px;
+  width: 11px;
+  height: 7px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+body.theme-water .water-icon-tasks::before {
+  inset: 2px 4px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+}
+
+body.theme-water .water-icon-tasks::after {
+  left: 9px;
+  top: 8px;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  box-shadow: -4px 7px 0 -2px currentColor;
+  transform: rotate(-45deg);
+}
+
+body.theme-water .water-icon-chat::before {
+  inset: 3px 3px 6px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+body.theme-water .water-icon-chat::after {
+  left: 6px;
+  bottom: 2px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid currentColor;
+  transform: rotate(27deg);
+}
+
+body.theme-water .water-icon-docs::before {
+  inset: 2px 5px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  background: linear-gradient(currentColor, currentColor) 5px 8px / 8px 2px no-repeat,
+              linear-gradient(currentColor, currentColor) 5px 13px / 8px 2px no-repeat;
+}
+
+body.theme-water .water-icon-docs::after {
+  right: 5px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: rgba(8, 36, 49, .86);
+}
+
+body.theme-water .water-icon-transport::before {
+  left: 3px;
+  right: 3px;
+  top: 7px;
+  height: 13px;
+  border: 2px solid currentColor;
+  border-radius: 6px 6px 4px 4px;
+  background: linear-gradient(90deg, currentColor, currentColor) 4px 4px / 13px 2px no-repeat;
+}
+
+body.theme-water .water-icon-transport::after {
+  left: 7px;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 10px 0 currentColor;
+}
+
+@keyframes waterShimmer {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes waterNoise {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(1px, -1px, 0); }
+  50% { transform: translate3d(-1px, 1px, 0); }
+  75% { transform: translate3d(1px, 1px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.theme-water .water-drop::before,
+  body.theme-water .water-drop::after {
+    animation: none;
+  }
+}

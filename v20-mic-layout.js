@@ -1,5 +1,5 @@
 (()=>{
-const VERSION='v20.0.0 Mic Restored';
+const VERSION='v21.0.0 Water Rebuild';
 const $=id=>document.getElementById(id);
 function setVersion(){document.querySelectorAll('.settings-version span').forEach(x=>x.textContent=VERSION);const s=window.voiceEvents?.getState?.();if(s){s.settings.appVersion=VERSION;window.voiceEvents?.save?.()}}
 function setupComposer(){const c=document.querySelector('.composer');if(!c||c.dataset.v20)return;c.dataset.v20='1';const rec=$('rec');if(rec)rec.textContent='🎙';const photo=$('photo');if(photo&&photo.parentElement){const label=photo.parentElement;if(label.firstChild&&label.firstChild.nodeType===3)label.firstChild.nodeValue='📷'}if(!$('eventTextInput')){const input=document.createElement('input');input.id='eventTextInput';input.className='event-text-input';input.placeholder='Введите комментарий...';c.appendChild(input);input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addEventText(input.value.trim());input.value=''}})}}

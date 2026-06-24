@@ -32,8 +32,11 @@
     document.querySelectorAll("#nav button[data-go]").forEach(button => {
       const section = sectionMap[button.dataset.go];
       if (!section || !theme.nav[section]) return;
-      button.querySelector(".v13-nav-normal").src = theme.nav[section].normal;
-      button.querySelector(".v13-nav-active").src = theme.nav[section].active;
+      const normal = button.querySelector(".v13-nav-normal");
+      const active = button.querySelector(".v13-nav-active");
+      if (!normal || !active) return;
+      normal.src = theme.nav[section].normal;
+      active.src = theme.nav[section].active;
     });
     document.querySelectorAll(".theme-card").forEach(card => card.classList.toggle("active", card.dataset.theme === className));
   };

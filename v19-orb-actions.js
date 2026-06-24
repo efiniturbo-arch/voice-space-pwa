@@ -1,5 +1,5 @@
 (()=>{
-const VERSION='v19.0.0 Orb Actions';
+const VERSION='v21.0.0 Water Rebuild';
 const $=id=>document.getElementById(id);
 const items={events:['◷','События'],tasks:['☑','Задачи'],chat:['◌','Чат'],docs:['▤','Документы'],transport:['▰','Транспорт']};
 function setVersion(){document.querySelectorAll('.settings-version span').forEach(x=>x.textContent=VERSION);const s=window.voiceEvents&&window.voiceEvents.getState?window.voiceEvents.getState():null;if(s){s.settings.appVersion=VERSION;window.voiceEvents.save&&window.voiceEvents.save()}}

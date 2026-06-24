@@ -41,8 +41,8 @@
   }
   function patchClicks(){
     const dateBtn=$('dateBtn'), statusBtn=$('filterBtn');
-    if(dateBtn&&!dateBtn.dataset.v16){dateBtn.dataset.v16='1';dateBtn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();const input=$('v16DatePicker');input.value=state()?.filter?.date||'';if(input.showPicker)input.showPicker();else input.click()},true)}
-    if(statusBtn&&!statusBtn.dataset.v16){statusBtn.dataset.v16='1';statusBtn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();const menu=$('v16StatusMenu');menu.classList.toggle('hidden');sync()},true)}
+    if(dateBtn&&!dateBtn.dataset.v16){dateBtn.dataset.v16='1';dateBtn.addEventListener('click',e=>{if(document.body.classList.contains('theme-water'))return;e.preventDefault();e.stopImmediatePropagation();const input=$('v16DatePicker');input.value=state()?.filter?.date||'';if(input.showPicker)input.showPicker();else input.click()},true)}
+    if(statusBtn&&!statusBtn.dataset.v16){statusBtn.dataset.v16='1';statusBtn.addEventListener('click',e=>{if(document.body.classList.contains('theme-water'))return;e.preventDefault();e.stopImmediatePropagation();const menu=$('v16StatusMenu');menu.classList.toggle('hidden');sync()},true)}
   }
   function wrapHero(){
     const hero=document.querySelector('.hero');if(!hero||hero.dataset.v16)return;hero.dataset.v16='1';
