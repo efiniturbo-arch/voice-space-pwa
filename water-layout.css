@@ -1,0 +1,593 @@
+/* v21 Water Rebuild: standalone layout, scoped to theme-water */
+body.theme-water {
+  min-height: 100dvh;
+  padding-bottom: calc(150px + env(safe-area-inset-bottom));
+  color: var(--water-ink);
+  background: #020d14 var(--water-asset-bg) center top / cover fixed no-repeat !important;
+}
+
+body.theme-water::before {
+  z-index: -1 !important;
+  opacity: .42 !important;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(255, 255, 255, .5) 0 1px, rgba(94, 195, 231, .16) 3px, transparent 10px),
+    radial-gradient(ellipse at 78% 31%, rgba(255, 255, 255, .42) 0 2px, rgba(94, 195, 231, .14) 4px, transparent 13px),
+    radial-gradient(ellipse at 36% 72%, rgba(255, 255, 255, .32) 0 1px, rgba(94, 195, 231, .12) 3px, transparent 11px) !important;
+  background-size: 170px 170px, 230px 230px, 190px 190px !important;
+}
+
+.theme-water .topbar {
+  position: relative !important;
+  top: auto !important;
+  height: auto !important;
+  min-height: calc(84px + env(safe-area-inset-top));
+  padding: calc(15px + env(safe-area-inset-top)) max(22px, calc((100vw - 720px) / 2)) 12px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--water-asset-header) center / 100% 100% no-repeat !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.theme-water .topbar .map-globe {
+  display: none !important;
+}
+
+.theme-water .brand {
+  min-width: 0;
+}
+
+.theme-water .brand b {
+  font-size: clamp(23px, 6vw, 30px) !important;
+  letter-spacing: -.035em;
+}
+
+.theme-water .brand small {
+  margin-top: 2px;
+  color: var(--water-muted) !important;
+  font-size: 13px !important;
+}
+
+.theme-water .mark,
+.theme-water .avatar {
+  width: 52px !important;
+  height: 52px !important;
+  flex: 0 0 52px;
+  border: 1px solid var(--water-line) !important;
+  background:
+    radial-gradient(circle at 32% 20%, rgba(255, 255, 255, .86), transparent 20%),
+    linear-gradient(145deg, rgba(154, 225, 249, .35), rgba(6, 46, 64, .82)) !important;
+  color: #eafaff !important;
+  box-shadow: inset 0 8px 17px rgba(255, 255, 255, .12), 0 8px 22px var(--water-shadow) !important;
+}
+
+.theme-water .avatar.gear-mode::after {
+  color: #eafaff !important;
+}
+
+.theme-water .profile-menu {
+  top: calc(76px + env(safe-area-inset-top)) !important;
+  right: max(16px, calc((100vw - 720px) / 2)) !important;
+  border-color: var(--water-line) !important;
+  background: linear-gradient(150deg, rgba(117, 184, 207, .22), rgba(2, 24, 35, .96)) !important;
+}
+
+.theme-water #events.water-home-layout,
+.theme-water #detail.water-event-layout,
+.theme-water #tasks.water-tasks-layout,
+.theme-water #chat.screen,
+.theme-water #docs.screen,
+.theme-water #transport.screen,
+.theme-water #settings.screen {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 8px 22px calc(166px + env(safe-area-inset-bottom)) !important;
+}
+
+.theme-water #events.water-home-layout > .panel,
+.theme-water #tasks.water-tasks-layout > .panel {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.theme-water .water-home-layout .hero {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+}
+
+.theme-water .water-home-layout .hero > div:first-child {
+  display: contents;
+}
+
+.theme-water .water-home-layout .hero h1 {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+  color: #f4fbff;
+  font-size: clamp(31px, 8vw, 45px) !important;
+  line-height: 1;
+  letter-spacing: -.045em;
+  text-shadow: 0 3px 20px rgba(0, 10, 17, .6);
+}
+
+.theme-water .water-home-layout .hero-actions {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px !important;
+}
+
+.theme-water #dateBtn,
+.theme-water #filterBtn {
+  position: relative !important;
+  z-index: 30 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 56px !important;
+  padding: 10px 14px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center !important;
+  gap: 8px;
+  overflow: hidden;
+  border: 1px solid var(--water-line) !important;
+  border-radius: 19px !important;
+  color: var(--water-ink) !important;
+  font-size: 14px !important;
+  font-weight: 780;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-position: center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+}
+
+.theme-water #dateBtn {
+  background-image: var(--water-asset-date) !important;
+}
+
+.theme-water #filterBtn {
+  background-image: var(--water-asset-status) !important;
+}
+
+.theme-water #dateBtn .filter-icon,
+.theme-water #filterBtn .filter-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: grid;
+  place-items: center;
+  color: var(--water-cyan);
+}
+
+.theme-water #eventList {
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.theme-water #eventList .event {
+  position: relative !important;
+  min-height: 128px !important;
+  padding: 19px 18px !important;
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr) 36px !important;
+  gap: 14px !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 29px !important;
+  background: var(--water-asset-card-normal) center / 100% 100% no-repeat !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  filter: none !important;
+}
+
+.theme-water #eventList .event::before,
+.theme-water #eventList .event::after {
+  display: none;
+}
+
+.theme-water #eventList .event::before {
+  width: 24px;
+  height: 30px;
+  right: 17%;
+  top: -8px;
+  transform: rotate(13deg);
+}
+
+.theme-water #eventList .event::after {
+  width: 15px;
+  height: 19px;
+  right: 8%;
+  bottom: 8px;
+  opacity: .62;
+}
+
+.theme-water #eventList .event .ico {
+  width: 46px !important;
+  height: 46px !important;
+  border-width: 1px !important;
+  background: rgba(5, 31, 43, .64) !important;
+  box-shadow: inset 0 6px 12px rgba(255, 255, 255, .1), 0 0 17px currentColor !important;
+}
+
+.theme-water #eventList .event .time {
+  margin: 0 0 7px !important;
+  color: white !important;
+  font-size: clamp(32px, 8vw, 43px) !important;
+  line-height: .93 !important;
+  letter-spacing: -.045em !important;
+}
+
+.theme-water #eventList .event .desc {
+  color: rgba(232, 246, 252, .75) !important;
+  font-size: 15px !important;
+  line-height: 1.32 !important;
+}
+
+.theme-water #eventList .event .desc b {
+  display: inline !important;
+  color: var(--water-cyan) !important;
+  font-size: 16px !important;
+}
+
+.theme-water #eventList .event.warning { background-image: var(--water-asset-card-warning) !important; }
+.theme-water #eventList .event.warning .desc b { color: #ffd45f !important; }
+.theme-water #eventList .event.danger { background-image: var(--water-asset-card-danger) !important; }
+.theme-water #eventList .event.danger .desc b { color: #ff7588 !important; }
+.theme-water #eventList .event.filled { background-image: var(--water-asset-card-done) !important; }
+.theme-water #eventList .event.filled .desc b { color: #8af777 !important; }
+
+.theme-water #detail.water-event-layout {
+  padding-bottom: calc(26px + env(safe-area-inset-bottom)) !important;
+}
+
+.theme-water #detail.water-event-layout > .panel {
+  min-height: calc(100dvh - 124px);
+  padding: 22px 20px 126px !important;
+  border: 1px solid var(--water-line) !important;
+  border-radius: 31px !important;
+  background: linear-gradient(150deg, rgba(170, 222, 239, .18), rgba(3, 28, 40, .86)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 25px 60px rgba(0, 7, 13, .44) !important;
+}
+
+.theme-water #detail.water-event-layout .head {
+  gap: 12px;
+}
+
+.theme-water #detail.water-event-layout .composer,
+.theme-water .water-task-composer {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: calc(14px + env(safe-area-inset-bottom)) !important;
+  z-index: 80 !important;
+  transform: translateX(-50%) !important;
+  width: min(716px, calc(100vw - 28px)) !important;
+  min-height: 90px;
+  padding: 11px 13px !important;
+  display: grid !important;
+  grid-template-columns: 66px 58px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  align-items: center;
+  border: 1px solid rgba(220, 248, 255, .42) !important;
+  border-radius: 30px !important;
+  background: linear-gradient(145deg, rgba(167, 224, 243, .3), rgba(8, 42, 56, .78) 46%, rgba(0, 15, 23, .94)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 20px 52px rgba(0, 7, 13, .55) !important;
+  backdrop-filter: blur(24px) saturate(1.45) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.45) !important;
+}
+
+.theme-water #detail.water-event-layout .composer .round-action,
+.theme-water .water-task-composer .task-mic,
+.theme-water .water-task-composer .task-photo {
+  width: 58px !important;
+  height: 64px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(224, 250, 255, .55) !important;
+  border-radius: 49% 51% 50% 50% / 39% 39% 61% 61% !important;
+  display: grid !important;
+  place-items: center;
+  color: #eefbff !important;
+  font-size: 24px !important;
+  background-color: transparent !important;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+}
+
+.theme-water #detail.water-event-layout .composer #rec {
+  width: 66px !important;
+  color: #63ddff !important;
+  touch-action: manipulation;
+  background-image: var(--water-asset-mic) !important;
+  font-size: 0 !important;
+}
+
+.theme-water #detail.water-event-layout .composer label.round-action,
+.theme-water .water-task-composer .task-photo {
+  background-image: var(--water-asset-camera) !important;
+  font-size: 0 !important;
+}
+
+.theme-water #detail.water-event-layout .composer #rec.recording {
+  color: #ff647b !important;
+  border-color: #ff647b !important;
+  box-shadow: inset 0 8px 16px rgba(255, 255, 255, .13), 0 0 24px rgba(255, 75, 98, .62) !important;
+}
+
+.theme-water #detail.water-event-layout .event-text-input,
+.theme-water .water-task-composer .task-action-input {
+  min-width: 0 !important;
+  min-height: 56px !important;
+  padding: 0 15px !important;
+  border: 1px solid rgba(218, 247, 255, .22) !important;
+  border-radius: 18px !important;
+  color: var(--water-ink) !important;
+  background: rgba(1, 22, 32, .48) !important;
+  box-shadow: inset 0 6px 16px rgba(0, 8, 14, .22) !important;
+}
+
+.theme-water #tasks.water-tasks-layout > .panel {
+  padding-bottom: 115px !important;
+}
+
+.theme-water #tasks.water-tasks-layout h1 {
+  margin: 0 0 18px;
+  font-size: clamp(31px, 8vw, 45px);
+}
+
+.theme-water #tasks.water-tasks-layout #taskText,
+.theme-water #tasks.water-tasks-layout > .panel > .ghost,
+.theme-water #tasks.water-tasks-layout > .panel > #addTask {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.theme-water #tasks.water-tasks-layout .task {
+  border-color: var(--water-line) !important;
+  background: linear-gradient(145deg, rgba(183, 229, 244, .16), rgba(1, 23, 34, .76)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 14px 32px rgba(0, 8, 14, .34) !important;
+}
+
+.theme-water .water-task-composer {
+  bottom: calc(150px + env(safe-area-inset-bottom)) !important;
+  display: none !important;
+}
+
+body.theme-water.tasks-active .water-task-composer {
+  display: grid !important;
+}
+
+.theme-water .water-task-composer .task-mic {
+  width: 66px !important;
+  color: #63ddff !important;
+  touch-action: manipulation;
+  background-image: var(--water-asset-mic) !important;
+  font-size: 0 !important;
+}
+
+.theme-water .water-task-composer .task-mic.listening {
+  color: #ff647b !important;
+  border-color: #ff647b !important;
+  box-shadow: 0 0 24px rgba(255, 75, 98, .55) !important;
+}
+
+.theme-water .water-task-composer .task-photo {
+  cursor: pointer;
+}
+
+.theme-water #nav.water-bottom-nav {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  z-index: 70 !important;
+  transform: translateX(-50%) !important;
+  width: min(760px, 100vw) !important;
+  height: calc(142px + env(safe-area-inset-bottom)) !important;
+  padding: 6px 2px calc(7px + env(safe-area-inset-bottom)) !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  align-items: end !important;
+  gap: 2px !important;
+  overflow: visible !important;
+  border: 1px solid rgba(220, 248, 255, .26) !important;
+  border-bottom: 0 !important;
+  border-radius: 31px 31px 0 0 !important;
+  background: var(--water-asset-dock) center / 100% 100% no-repeat !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.theme-water #nav.water-bottom-nav button {
+  height: 128px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  overflow: visible !important;
+  border: 0 !important;
+  color: rgba(232, 247, 252, .78);
+  background: transparent !important;
+}
+
+.theme-water #nav.water-bottom-nav .water-drop {
+  width: min(76px, 19.5vw);
+  height: min(100px, 25.6vw);
+  max-width: 78px;
+  max-height: 102px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transition: transform .28s cubic-bezier(.18, .9, .25, 1.24), filter .28s ease, box-shadow .28s ease;
+  transform-origin: 50% 100%;
+}
+
+.theme-water #nav.water-bottom-nav .water-nav-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.theme-water #nav.water-bottom-nav button.active {
+  color: #7ee6ff;
+}
+
+.theme-water #nav.water-bottom-nav button.active .water-drop {
+  transform: translateY(-9px) scale(1.25);
+  filter: brightness(1.13) saturate(1.18);
+  box-shadow: none;
+}
+
+.theme-water #nav.water-bottom-nav .nav-badge {
+  top: 2px !important;
+  right: 8% !important;
+}
+
+.theme-water #sheet {
+  display: none !important;
+}
+
+.water-filter-popover {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  display: grid;
+  align-items: end;
+  padding: 18px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  color: #edfaff;
+  background: rgba(0, 7, 12, .68);
+}
+
+.water-filter-popover.hidden {
+  display: none;
+}
+
+.water-filter-card {
+  width: min(480px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid rgba(220, 248, 255, .38);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(148, 211, 232, .25), rgba(2, 25, 36, .97));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 28px 80px rgba(0, 0, 0, .58);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.water-filter-card h2 {
+  margin: 0 0 15px;
+  font-size: 21px;
+}
+
+.water-filter-card input {
+  min-height: 56px;
+  font-size: 17px;
+}
+
+.water-filter-actions,
+.water-status-options {
+  display: grid;
+  gap: 10px;
+}
+
+.water-filter-actions {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 14px;
+}
+
+.water-filter-card button {
+  min-height: 48px;
+  padding: 0 13px;
+  border: 1px solid rgba(220, 248, 255, .28);
+  border-radius: 15px;
+  color: #edfaff;
+  font-weight: 760;
+  background: rgba(255, 255, 255, .07);
+}
+
+.water-filter-card button.primary,
+.water-status-options button.active {
+  border-color: rgba(77, 215, 255, .65);
+  color: #03131d;
+  background: linear-gradient(135deg, #8decff, #32bfee);
+}
+
+@media (max-width: 430px) {
+  .theme-water #events.water-home-layout,
+  .theme-water #detail.water-event-layout,
+  .theme-water #tasks.water-tasks-layout,
+  .theme-water #chat.screen,
+  .theme-water #docs.screen,
+  .theme-water #transport.screen,
+  .theme-water #settings.screen {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .theme-water .topbar {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .theme-water #eventList .event {
+    grid-template-columns: 44px minmax(0, 1fr) 28px !important;
+    gap: 10px !important;
+    padding: 17px 15px !important;
+  }
+
+  .theme-water #detail.water-event-layout .composer,
+  .theme-water .water-task-composer {
+    width: calc(100vw - 20px) !important;
+    grid-template-columns: 62px 54px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 9px 10px !important;
+  }
+
+  .theme-water #detail.water-event-layout .composer #rec,
+  .theme-water .water-task-composer .task-mic {
+    width: 62px !important;
+  }
+
+  .theme-water #detail.water-event-layout .composer .round-action,
+  .theme-water .water-task-composer .task-photo {
+    width: 54px !important;
+    height: 59px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .theme-water #nav.water-bottom-nav .water-drop {
+    width: 68px;
+    height: 89px;
+  }
+
+  .theme-water #nav.water-bottom-nav .water-nav-label {
+    font-size: 8px;
+  }
+}

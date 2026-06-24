@@ -11,7 +11,7 @@
   let previousScreen = "events";
 
   const defaultState = () => ({
-    settings: { theme: "theme-standard", interval: 60, ip: "", notify: false, appVersion: "v13.0.0 UI Kit" },
+    settings: { theme: "theme-standard", interval: 60, ip: "", notify: false, appVersion: "v21.0.0 Water Rebuild" },
     filter: { date: "", status: "all" },
     events: [],
     tasks: [],
@@ -27,7 +27,7 @@
       return {
         ...clean,
         ...saved,
-        settings: { ...clean.settings, ...(saved.settings || {}), appVersion: "v13.0.0 UI Kit" },
+        settings: { ...clean.settings, ...(saved.settings || {}), appVersion: "v21.0.0 Water Rebuild" },
         filter: { ...clean.filter, ...(saved.filter || {}) },
         events: Array.isArray(saved.events) ? saved.events : [],
         tasks: Array.isArray(saved.tasks) ? saved.tasks : [],
@@ -321,7 +321,7 @@
   }));
   document.addEventListener("voice-events-theme-change", event => {
     state.settings.theme = event.detail.theme;
-    state.settings.appVersion = "v13.0.0 UI Kit";
+    state.settings.appVersion = "v21.0.0 Water Rebuild";
     save();
     applySettings();
   });
