@@ -9,13 +9,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Voice Events</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=10.5.0">
-  <link rel="stylesheet" href="nav-liquid.css?v=10.5.0">
-  <link rel="stylesheet" href="v9-theme.css?v=10.5.0">
-  <link rel="stylesheet" href="spacing-polish.css?v=10.5.0">
-  <link rel="stylesheet" href="v10-restart.css?v=10.5.0">
-  <link rel="stylesheet" href="v10-filter-split.css?v=10.5.0">
-  <link rel="stylesheet" href="v10-action-panel.css?v=10.5.0">
+  <link rel="stylesheet" href="style.css?v=10.6.0">
+  <link rel="stylesheet" href="nav-liquid.css?v=10.6.0">
+  <link rel="stylesheet" href="v9-theme.css?v=10.6.0">
+  <link rel="stylesheet" href="spacing-polish.css?v=10.6.0">
+  <link rel="stylesheet" href="v10-restart.css?v=10.6.0">
+  <link rel="stylesheet" href="v10-filter-split.css?v=10.6.0">
+  <link rel="stylesheet" href="v10-action-panel.css?v=10.6.0">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -28,26 +28,15 @@
     <button id="avatar" class="avatar">АВ</button>
   </header>
 
-  <div id="profile" class="profile-menu">
-    <b>Антон Воропаев</b>
-    <small>Администратор</small>
-    <button data-go="settings">⚙ Настройки</button>
-    <button data-go="settings">🌌 Сменить тему</button>
-    <button>↩ Выйти</button>
-  </div>
+  <div id="profile" class="profile-menu"><b>Антон Воропаев</b><small>Администратор</small><button data-go="settings">⚙ Настройки</button><button data-go="settings">🌌 Сменить тему</button><button>↩ Выйти</button></div>
 
-  <main id="events" class="screen">
-    <section class="panel">
-      <div class="hero"><div><h1>Журнал событий</h1><div class="hero-actions"><button id="dateBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="today"></span></button><button id="filterBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="statusLabel">Показать все</span><span id="badge"></span></button></div></div></div>
-      <div id="eventList" class="list"></div>
-    </section>
-  </main>
+  <main id="events" class="screen"><section class="panel"><div class="hero"><div><h1>Журнал событий</h1><div class="hero-actions"><button id="dateBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="today"></span></button><button id="filterBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="statusLabel">Показать все</span><span id="badge"></span></button></div></div></div><div id="eventList" class="list"></div></section></main>
 
-  <main id="detail" class="screen hidden"><section class="panel detail"><div class="head"><div><small>КАРТОЧКА СОБЫТИЯ</small><h1 id="dt"></h1><p id="ds"></p></div><b id="pill" class="pill"></b></div><div id="msgs" class="msgs"></div></section><div class="composer"><button id="rec" class="water-action big">🎙</button><label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label><input id="eventText" type="text" placeholder="Введите комментарий..."><span id="hint">Нажмите для записи</span></div></main>
+  <main id="detail" class="screen hidden"><section class="panel detail"><div class="head"><div><small>КАРТОЧКА СОБЫТИЯ</small><h1 id="dt"></h1><p id="ds"></p></div><b id="pill" class="pill"></b></div><div id="msgs" class="msgs"></div></section><div class="composer"><button id="rec" class="water-action big"><span class="mic-symbol">🎙</span></button><label class="water-action">🎥<input id="eventVideo" type="file" accept="video/*" capture="environment" hidden></label><label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label><input id="eventText" type="text" placeholder="Введите комментарий..."><button id="eventSend" class="send-event">➤</button><span id="hint">Нажмите для записи</span></div></main>
 
   <main id="tasks" class="screen hidden"><section class="panel"><h1>Задачи</h1><textarea id="taskText" placeholder="Напишите задачу..."></textarea><label class="ghost wide">📷 Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label><button id="addTask" class="primary wide">Добавить задачу</button><div id="taskList" class="list"></div></section></main>
 
-  <main id="chat" class="screen hidden"><section class="panel chat"><h1>Чат</h1><div id="chatList" class="chatlist"></div></section><div class="chatbar"><button id="chatMic" class="water-action big chat-mic">🎙</button><label class="water-action">📷<input id="chatPhoto" type="file" accept="image/*" capture="environment" hidden></label><input id="chatText" placeholder="Введите сообщение..."><button id="send">➤</button></div></main>
+  <main id="chat" class="screen hidden"><section class="panel chat"><h1>Чат</h1><div id="chatList" class="chatlist"></div></section><div class="chatbar"><button id="chatMic" class="water-action big chat-mic"><span class="mic-symbol">🎙</span></button><label class="water-action">🎥<input id="chatVideo" type="file" accept="video/*" capture="environment" hidden></label><label class="water-action">📷<input id="chatPhoto" type="file" accept="image/*" capture="environment" hidden></label><input id="chatText" placeholder="Введите сообщение..."><button id="send">➤</button></div></main>
 
   <main id="docs" class="screen hidden"><section class="panel"><h1>Документы</h1><label class="upload">＋ Добавить файл<input id="docIn" type="file" multiple hidden></label><div id="docList" class="docs"></div></section></main>
 
@@ -62,7 +51,7 @@
       <div class="settings-interval-title">Интервал создания карточек событий</div>
       <p class="settings-interval-note">Новые карточки создаются автоматически через указанный интервал.</p>
       <div class="cols"><div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div><div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div></div>
-      <div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div>
+      <div class="form-group notify-row"><div class="notify-text"><span class="notify-title">Уведомления</span><span id="notifyState" class="notify-state">Выключены</span></div><label class="notify-switch"><input id="notify" type="checkbox"><span class="notify-slider"></span></label></div>
       <h2>Дизайн приложения</h2>
       <div class="theme-grid" aria-label="Выбор темы">
         <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Синий и фиолетовый неон</small></span><span class="theme-check">✓</span></button>
@@ -78,11 +67,11 @@
   <div id="dateSheet" class="sheet hidden"><div class="modal-content"><h2 class="modal-title">Выбор даты <button id="dateX">×</button></h2><p class="filter-mini-note">Левая кнопка меняет только дату журнала.</p><div class="form-group"><label>Дата<input id="fdOnly" type="date"></label></div><div class="form-actions"><button id="dateReset" class="ghost">Сбросить</button><button id="dateApply" class="primary">Применить</button></div></div></div>
   <div id="statusSheet" class="sheet hidden"><div class="modal-content"><h2 class="modal-title">Состояние карточки <button id="statusX">×</button></h2><p class="filter-mini-note">Правая кнопка меняет только состояние карточки.</p><div class="filter-modal-list"><button class="status-choice" data-status="all">Показать все</button><button class="status-choice" data-status="filled">Заполнено</button><button class="status-choice" data-status="wait">Ожидает</button><button class="status-choice" data-status="warning">Внимание</button><button class="status-choice" data-status="danger">Просрочено</button></div></div></div>
 
-  <div id="taskComposer" class="task-composer with-send"><button id="taskMic" class="water-action big task-mic">🎙</button><label class="water-action">📷<input id="taskQuickPhoto" type="file" accept="image/*" capture="environment" hidden></label><input id="taskQuickText" type="text" placeholder="Введите текст задачи..."><button id="taskQuickAdd" class="send-task">➤</button></div>
+  <div id="taskComposer" class="task-composer"><button id="taskMic" class="water-action big task-mic"><span class="mic-symbol">🎙</span></button><label class="water-action">🎥<input id="taskQuickVideo" type="file" accept="video/*" capture="environment" hidden></label><label class="water-action">📷<input id="taskQuickPhoto" type="file" accept="image/*" capture="environment" hidden></label><input id="taskQuickText" type="text" placeholder="Введите текст задачи..."><button id="taskQuickAdd" class="send-task">➤</button></div>
 
   <nav id="nav" aria-label="Основная навигация"><button class="active" data-go="events" aria-label="События"><span class="nav-orb"><span class="nav-icon">◷</span></span><span class="nav-label">События</span></button><button data-go="tasks" aria-label="Задачи"><span class="nav-orb"><span class="nav-icon">☑</span></span><span class="nav-label">Задачи</span></button><button data-go="chat" aria-label="Чат"><span class="nav-orb"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span></span><span class="nav-label">Чат</span></button><button data-go="docs" aria-label="Документы"><span class="nav-orb"><span class="nav-icon">▣</span></span><span class="nav-label">Документы</span></button><button data-go="transport" aria-label="Транспорт"><span class="nav-orb"><span class="nav-icon">▰</span></span><span class="nav-label">Транспорт</span></button></nav>
 
-  <script src="app.js?v=10.5.0"></script>
-  <script src="v9-theme.js?v=10.5.0"></script>
+  <script src="app.js?v=10.6.0"></script>
+  <script src="v9-theme.js?v=10.6.0"></script>
 </body>
 </html>
