@@ -1,11 +1,13 @@
-const CACHE = "voice-events-pwa-v13-1";
+const CACHE = "voice-events-pwa-v14-0";
 const CORE = [
   "./",
   "./index.html",
-  "./style.css?v=13.0.0",
-  "./v13-ui.css?v=13.0.0",
-  "./app.js?v=13.0.0",
-  "./v13-ui.js?v=13.0.0",
+  "./style.css?v=14.0.0",
+  "./v13-ui.css?v=14.0.0",
+  "./v14-direct.css?v=14.0.0",
+  "./app.js?v=14.0.0",
+  "./v13-ui.js?v=14.0.0",
+  "./v14-direct.js?v=14.0.0",
   "./asset-manifest.json",
   "./manifest.json",
   "./icons/icon-192.svg",
