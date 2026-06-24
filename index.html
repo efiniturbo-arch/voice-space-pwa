@@ -9,11 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Voice Events</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=10.2.0">
-  <link rel="stylesheet" href="nav-liquid.css?v=10.2.0">
-  <link rel="stylesheet" href="v9-theme.css?v=10.2.0">
-  <link rel="stylesheet" href="spacing-polish.css?v=10.2.0">
-  <link rel="stylesheet" href="v10-restart.css?v=10.2.0">
+  <link rel="stylesheet" href="style.css?v=10.3.0">
+  <link rel="stylesheet" href="nav-liquid.css?v=10.3.0">
+  <link rel="stylesheet" href="v9-theme.css?v=10.3.0">
+  <link rel="stylesheet" href="spacing-polish.css?v=10.3.0">
+  <link rel="stylesheet" href="v10-restart.css?v=10.3.0">
+  <link rel="stylesheet" href="v10-filter-split.css?v=10.3.0">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -37,8 +38,13 @@
   <main id="events" class="screen">
     <section class="panel">
       <div class="hero">
-        <div><h1>Журнал событий</h1><button id="dateBtn" class="ghost">📅 <span id="today"></span></button></div>
-        <button id="filterBtn" class="ghost">▽ Фильтр <span id="badge"></span></button>
+        <div>
+          <h1>Журнал событий</h1>
+          <div class="hero-actions">
+            <button id="dateBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="today"></span></button>
+            <button id="filterBtn" class="ghost"><span class="filter-chevron">▽</span> <span id="statusLabel">Показать все</span><span id="badge"></span></button>
+          </div>
+        </div>
       </div>
       <div id="eventList" class="list"></div>
     </section>
@@ -123,6 +129,29 @@
     </section>
   </main>
 
+  <div id="dateSheet" class="sheet hidden">
+    <div class="modal-content">
+      <h2 class="modal-title">Выбор даты <button id="dateX">×</button></h2>
+      <p class="filter-mini-note">Левая кнопка меняет только дату журнала.</p>
+      <div class="form-group"><label>Дата<input id="fdOnly" type="date"></label></div>
+      <div class="form-actions"><button id="dateReset" class="ghost">Сбросить</button><button id="dateApply" class="primary">Применить</button></div>
+    </div>
+  </div>
+
+  <div id="statusSheet" class="sheet hidden">
+    <div class="modal-content">
+      <h2 class="modal-title">Состояние карточки <button id="statusX">×</button></h2>
+      <p class="filter-mini-note">Правая кнопка меняет только состояние карточки.</p>
+      <div class="filter-modal-list">
+        <button class="status-choice" data-status="all">Показать все</button>
+        <button class="status-choice" data-status="filled">Заполнено</button>
+        <button class="status-choice" data-status="wait">Ожидает</button>
+        <button class="status-choice" data-status="warning">Внимание</button>
+        <button class="status-choice" data-status="danger">Просрочено</button>
+      </div>
+    </div>
+  </div>
+
   <div id="sheet" class="sheet hidden">
     <div class="modal-content">
       <h2 class="modal-title">Фильтр событий <button id="x">×</button></h2>
@@ -147,7 +176,7 @@
     <button data-go="transport" aria-label="Транспорт"><span class="nav-orb"><span class="nav-icon">▰</span></span><span class="nav-label">Транспорт</span></button>
   </nav>
 
-  <script src="app.js?v=10.2.0"></script>
-  <script src="v9-theme.js?v=10.2.0"></script>
+  <script src="app.js?v=10.3.0"></script>
+  <script src="v9-theme.js?v=10.3.0"></script>
 </body>
 </html>
