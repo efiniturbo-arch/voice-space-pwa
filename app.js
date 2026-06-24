@@ -1,6 +1,7 @@
 const KEY="voice-events-v7",M=60000;
 let rec,chunks=[],active=null;
 const $=id=>document.getElementById(id);
+const STATUS_LABELS={all:"Показать все",filled:"Заполнено",wait:"Ожидает",warning:"Внимание",danger:"Просрочено"};
 let s=load();
 
 function load(){
@@ -33,15 +34,22 @@ function bodyClass(){
   if(!$('tasks')?.classList.contains('hidden'))cls.push("tasks-mode");
   document.body.className=cls.join(" ")
 }
+function syncFilterUi(){
+  if($("fd"))$("fd").value=s.filter.date||"";
+  if($("fs"))$("fs").value=s.filter.status||"all";
+  if($("fdOnly"))$("fdOnly").value=s.filter.date||"";
+  if($("statusLabel"))$("statusLabel").textContent=STATUS_LABELS[s.filter.status||"all"]||"Показать все";
+  document.querySelectorAll(".status-choice").forEach(b=>b.classList.toggle("active",b.dataset.status===(s.filter.status||"all")));
+  if($("filterBtn"))$("filterBtn").classList.toggle("hasfilter",s.filter.status!="all");
+  if($("dateBtn"))$("dateBtn").classList.toggle("hasfilter",!!s.filter.date)
+}
 function apply(){
   bodyClass();
   if($("ip"))$("ip").value=s.settings.ip||"";
   if($("hh"))$("hh").value=Math.floor((s.settings.interval||60)/60);
   if($("mm"))$("mm").value=(s.settings.interval||60)%60;
   if($("notify"))$("notify").checked=!!s.settings.notify;
-  if($("fd"))$("fd").value=s.filter.date||"";
-  if($("fs"))$("fs").value=s.filter.status||"all";
-  if($("filterBtn"))$("filterBtn").classList.toggle("hasfilter",!!s.filter.date||s.filter.status!="all")
+  syncFilterUi()
 }
 function go(v){
   active=null;
@@ -100,6 +108,9 @@ function addTaskFromInputs(){
   let add=photo=>{s.tasks.unshift({text,photo});if($("taskText"))$("taskText").value="";if(quick)quick.value="";if($("taskPhoto"))$("taskPhoto").value="";if($("taskQuickPhoto"))$("taskQuickPhoto").value="";save();render()};
   f?fileData(f,add):add("")
 }
+function openDateFilter(){if($("fdOnly"))$("fdOnly").value=s.filter.date||"";$("dateSheet")?.classList.remove("hidden")}
+function openStatusFilter(){syncFilterUi();$("statusSheet")?.classList.remove("hidden")}
+function closeFilterSheets(){["dateSheet","statusSheet","sheet"].forEach(id=>$(id)?.classList.add("hidden"))}
 function render(){
   list();
   if($("taskList"))$("taskList").innerHTML=s.tasks.map(t=>`<div class="task"><b>${esc(t.text)}</b>${t.photo?`<img src="${t.photo}">`:""}</div>`).join("");
@@ -113,10 +124,16 @@ $("mapGlobe").onclick=e=>{e.stopPropagation();$("profile").classList.remove("ope
 $("avatar").onclick=e=>{e.stopPropagation();$("profile").classList.toggle("open")};
 document.onclick=e=>{if(!$('profile').contains(e.target)&&e.target!==$('avatar'))$('profile').classList.remove('open')};
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{$("profile").classList.remove("open");go(b.dataset.go)});
-$("filterBtn").onclick=$("dateBtn").onclick=()=>{$("sheet").classList.remove("hidden");apply()};
-$("x").onclick=()=>$("sheet").classList.add("hidden");
-$("apply").onclick=()=>{s.filter={date:$("fd").value,status:$("fs").value};save();$("sheet").classList.add("hidden");list()};
-$("reset").onclick=()=>{s.filter={date:"",status:"all"};save();$("sheet").classList.add("hidden");list()};
+$("dateBtn").onclick=openDateFilter;
+$("filterBtn").onclick=openStatusFilter;
+$("dateX").onclick=closeFilterSheets;
+$("statusX").onclick=closeFilterSheets;
+$("dateApply").onclick=()=>{s.filter.date=$("fdOnly").value;save();closeFilterSheets();list()};
+$("dateReset").onclick=()=>{s.filter.date="";save();closeFilterSheets();list()};
+document.querySelectorAll(".status-choice").forEach(b=>b.onclick=()=>{s.filter.status=b.dataset.status;save();closeFilterSheets();list()});
+if($("x"))$("x").onclick=closeFilterSheets;
+if($("apply"))$("apply").onclick=()=>{s.filter={date:$("fd").value,status:$("fs").value};save();closeFilterSheets();list()};
+if($("reset"))$("reset").onclick=()=>{s.filter={date:"",status:"all"};save();closeFilterSheets();list()};
 $("rec").onclick=record;
 $("eventText").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();addEventText()}};
 $("photo").onchange=e=>e.target.files[0]&&fileData(e.target.files[0],data=>{s.events.find(x=>x.id===active).items.push({type:"photo",data,created:new Date().toISOString()});save();msgs();list()});
