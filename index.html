@@ -7,36 +7,44 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Voice Events — голосовой журнал событий">
   <title>Voice Events</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=24">
-  <link rel="stylesheet" href="nav-liquid.css?v=24">
-  <link rel="stylesheet" href="v9-theme.css?v=24">
-  <link rel="stylesheet" href="spacing-polish.css?v=24">
+  <link rel="stylesheet" href="style.css?v=13.0.0">
+  <link rel="stylesheet" href="v13-ui.css?v=13.0.0">
 </head>
 <body class="theme-standard">
+  <div id="startupSplash" class="startup-splash" aria-label="Запуск Voice Events">
+    <div class="splash-atmosphere"></div>
+    <div id="splashStage" class="splash-stage">
+      <div class="splash-wordmark">VOROP<span>A</span>EV</div>
+    </div>
+  </div>
+
   <header class="topbar">
-    <button id="back" class="back">‹ Назад</button>
+    <button id="back" class="back" type="button">‹ Назад</button>
     <div class="brand">
       <div class="mark">VE</div>
       <div><b>Voice Events</b><small id="subtitle">Журнал событий</small></div>
     </div>
-    <button id="avatar" class="avatar">АВ</button>
+    <button id="avatar" class="avatar" type="button" aria-label="Открыть профиль">АВ</button>
   </header>
 
-  <div id="profile" class="profile-menu">
+  <aside id="profile" class="profile-menu" aria-hidden="true">
     <b>Антон Воропаев</b>
     <small>Администратор</small>
-    <button data-go="settings">⚙ Настройки</button>
-    <button data-go="settings">🌌 Сменить тему</button>
-    <button>↩ Выйти</button>
-  </div>
+    <button type="button" data-go="settings">⚙ Настройки</button>
+    <button type="button" data-go="settings">◈ Сменить тему</button>
+  </aside>
 
   <main id="events" class="screen">
     <section class="panel">
       <div class="hero">
-        <div><h1>Журнал событий</h1><button id="dateBtn" class="ghost">📅 <span id="today"></span></button></div>
-        <button id="filterBtn" class="ghost">▽ Фильтр <span id="badge"></span></button>
+        <div>
+          <h1>Журнал событий</h1>
+          <button id="dateBtn" class="ghost" type="button">▣ <span id="today"></span></button>
+        </div>
+        <button id="filterBtn" class="ghost filter-button" type="button">▽ Фильтр <span id="badge"></span></button>
       </div>
       <div id="eventList" class="list"></div>
     </section>
@@ -51,8 +59,8 @@
       <div id="msgs" class="msgs"></div>
     </section>
     <div class="composer">
-      <button id="rec" class="water-action big">🎙</button>
-      <label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
+      <button id="rec" class="round-action record-action" type="button" aria-label="Записать голос">●</button>
+      <label class="round-action" aria-label="Добавить фото">▧<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
       <span id="hint">Нажмите для записи</span>
     </div>
   </main>
@@ -61,8 +69,8 @@
     <section class="panel">
       <h1>Задачи</h1>
       <textarea id="taskText" placeholder="Напишите задачу..."></textarea>
-      <label class="ghost wide">📷 Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label>
-      <button id="addTask" class="primary wide">Добавить задачу</button>
+      <label class="ghost wide">▧ Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label>
+      <button id="addTask" class="primary wide" type="button">Добавить задачу</button>
       <div id="taskList" class="list"></div>
     </section>
   </main>
@@ -72,64 +80,77 @@
       <h1>Чат</h1>
       <div id="chatList" class="chatlist"></div>
     </section>
-    <div class="chatbar"><input id="chatText" placeholder="Сообщение..."><button id="send">➤</button></div>
+    <div class="chatbar">
+      <input id="chatText" placeholder="Сообщение..." autocomplete="off">
+      <button id="send" type="button" aria-label="Отправить">➤</button>
+    </div>
   </main>
 
   <main id="docs" class="screen hidden">
     <section class="panel">
-      <h1>Документы</h1>
-      <label class="upload">＋ Добавить файл<input id="docIn" type="file" multiple hidden></label>
+      <div class="section-title"><h1>Документы</h1><label class="upload">＋ Добавить<input id="docIn" type="file" multiple hidden></label></div>
       <div id="docList" class="docs"></div>
     </section>
   </main>
 
+  <main id="transport" class="screen hidden">
+    <section class="panel">
+      <div class="section-title"><div><h1>Транспорт</h1><p>Мониторинг техники и статусов</p></div><span class="live-dot">LIVE</span></div>
+      <div class="transport-grid">
+        <article class="transport-card"><span class="transport-icon">▣</span><div><b>ТС-001 / Буровая</b><small>Онлайн · 12 км/ч</small></div><span>›</span></article>
+        <article class="transport-card"><span class="transport-icon">◒</span><div><b>Топливо</b><small>4 бака · 72%</small></div><span>›</span></article>
+        <article class="transport-card"><span class="transport-icon">⌖</span><div><b>Геозоны</b><small>Объект №23 · в зоне</small></div><span>›</span></article>
+        <article class="transport-card"><span class="transport-icon">!</span><div><b>События транспорта</b><small>Нет критичных уведомлений</small></div><span>›</span></article>
+      </div>
+    </section>
+  </main>
+
   <main id="settings" class="screen hidden">
-    <section class="panel settings-panel modal-content">
-      <h1 class="modal-title">Настройки</h1>
+    <section class="panel settings-panel">
+      <div class="section-title"><h1>Настройки</h1><button id="closeSettings" class="icon-button" type="button" aria-label="Закрыть">×</button></div>
       <div class="form-group"><label>IP server<input id="ip" placeholder="192.168.1.100"></label></div>
-      <div class="cols"><div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div><div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div></div>
+      <div class="cols">
+        <div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div>
+        <div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
+      </div>
       <div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div>
       <h2>Дизайн приложения</h2>
-      <div class="theme-grid" aria-label="Выбор темы">
-        <button class="theme theme-card" data-theme="theme-standard"><span class="theme-preview theme-preview-cosmos"><i></i></span><span class="theme-copy"><b>Космос</b><small>Синий и фиолетовый неон</small></span><span class="theme-check">✓</span></button>
-        <button class="theme theme-card" data-theme="theme-drive-hero"><span class="theme-preview theme-preview-drive"><i></i></span><span class="theme-copy"><b>DriveInTech</b><small>Корпоративный техно стиль</small></span><span class="theme-check">✓</span></button>
-        <button class="theme theme-card" data-theme="theme-drive-monitor"><span class="theme-preview theme-preview-monitor"><i></i></span><span class="theme-copy"><b>Drive Monitor</b><small>Мониторинг и лайм акценты</small></span><span class="theme-check">✓</span></button>
-        <button class="theme theme-card" data-theme="theme-red-nebula"><span class="theme-preview theme-preview-red"><i></i></span><span class="theme-copy"><b>Red Nebula</b><small>Красное свечение и danger UI</small></span><span class="theme-check">✓</span></button>
-        <button class="theme theme-card" data-theme="theme-water"><span class="theme-preview theme-preview-water"><i></i></span><span class="theme-copy"><b>Капли воды</b><small>Дождь, стекло и прозрачность</small></span><span class="theme-check">✓</span></button>
-        <button class="theme theme-card" data-theme="theme-electric"><span class="theme-preview theme-preview-electric"><i></i></span><span class="theme-copy"><b>Электрический разряд</b><small>Синий и жёлтый заряд</small></span><span class="theme-check">✓</span></button>
+      <div id="themeGrid" class="theme-grid" aria-label="Выбор темы"></div>
+      <div class="settings-version">
+        <div><b>Voice Events</b><span>v13.0.0 UI Kit</span></div>
+        <button id="updateAppButton" class="primary" type="button">Обновить приложение</button>
       </div>
     </section>
   </main>
 
   <div id="sheet" class="sheet hidden">
-    <div class="modal-content">
-      <h2 class="modal-title">Фильтр событий <button id="x">×</button></h2>
+    <div>
+      <h2>Фильтр событий <button id="x" type="button" aria-label="Закрыть">×</button></h2>
       <div class="form-group"><label>Дата<input id="fd" type="date"></label></div>
-      <div class="form-group"><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label></div>
-      <div class="form-actions"><button id="reset" class="ghost">Сбросить</button><button id="apply" class="primary">Применить</button></div>
+      <div class="form-group">
+        <label>Статус
+          <select id="fs">
+            <option value="all">Все</option>
+            <option value="filled">Заполнено</option>
+            <option value="wait">Ожидает</option>
+            <option value="warning">Внимание</option>
+            <option value="danger">Просрочено</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-actions"><button id="reset" class="ghost" type="button">Сбросить</button><button id="apply" class="primary" type="button">Применить</button></div>
     </div>
   </div>
 
   <nav id="nav" aria-label="Основная навигация">
-    <span class="nav-liquid" aria-hidden="true"></span>
-    <button class="active" data-go="events" aria-label="События">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">◉</span><span class="nav-label">События</span></span></span>
-    </button>
-    <button data-go="tasks" aria-label="Задачи">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">☑</span><span class="nav-label">Задачи</span></span></span>
-    </button>
-    <button data-go="chat" aria-label="Чат">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span><span class="nav-label">Чат</span></span></span>
-    </button>
-    <button data-go="docs" aria-label="Документы">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">▣</span><span class="nav-label">Документы</span></span></span>
-    </button>
-    <button data-go="settings" aria-label="Настройки">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">⚙</span><span class="nav-label">Настройки</span></span></span>
-    </button>
+    <button class="active" type="button" data-go="events" aria-label="События"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
+    <button type="button" data-go="tasks" aria-label="Задачи"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
+    <button type="button" data-go="chat" aria-label="Чат"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span><span id="chatBadge" class="nav-badge">1</span></button>
+    <button type="button" data-go="docs" aria-label="Документы"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
+    <button type="button" data-go="transport" aria-label="Транспорт"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
   </nav>
 
-  <script src="app.js?v=24"></script>
-  <script src="v9-theme.js?v=24"></script>
+  <script src="app.js?v=13.0.0"></script>
+  <script src="v13-ui.js?v=13.0.0"></script>
 </body>
 </html>

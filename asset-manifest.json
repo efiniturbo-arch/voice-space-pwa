@@ -1,0 +1,179 @@
+{
+  "version": "Voice Events UI Kit v13",
+  "themes": [
+    {
+      "id": "driveintech",
+      "title": "DriveInTech",
+      "background": "themes/driveintech/backgrounds/background.svg",
+      "home_mockup": "themes/driveintech/mockups/home-screen.svg",
+      "event_card": "themes/driveintech/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/driveintech/nav/events-normal.svg",
+          "active": "themes/driveintech/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/driveintech/nav/tasks-normal.svg",
+          "active": "themes/driveintech/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/driveintech/nav/chat-normal.svg",
+          "active": "themes/driveintech/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/driveintech/nav/documents-normal.svg",
+          "active": "themes/driveintech/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/driveintech/nav/transport-normal.svg",
+          "active": "themes/driveintech/nav/transport-active.svg"
+        }
+      }
+    },
+    {
+      "id": "cosmos",
+      "title": "Космос",
+      "background": "themes/cosmos/backgrounds/background.svg",
+      "home_mockup": "themes/cosmos/mockups/home-screen.svg",
+      "event_card": "themes/cosmos/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/cosmos/nav/events-normal.svg",
+          "active": "themes/cosmos/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/cosmos/nav/tasks-normal.svg",
+          "active": "themes/cosmos/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/cosmos/nav/chat-normal.svg",
+          "active": "themes/cosmos/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/cosmos/nav/documents-normal.svg",
+          "active": "themes/cosmos/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/cosmos/nav/transport-normal.svg",
+          "active": "themes/cosmos/nav/transport-active.svg"
+        }
+      }
+    },
+    {
+      "id": "water",
+      "title": "Капли воды / Water Glass Pro",
+      "background": "themes/water/backgrounds/background.svg",
+      "home_mockup": "themes/water/mockups/home-screen.svg",
+      "event_card": "themes/water/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/water/nav/events-normal.svg",
+          "active": "themes/water/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/water/nav/tasks-normal.svg",
+          "active": "themes/water/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/water/nav/chat-normal.svg",
+          "active": "themes/water/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/water/nav/documents-normal.svg",
+          "active": "themes/water/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/water/nav/transport-normal.svg",
+          "active": "themes/water/nav/transport-active.svg"
+        }
+      }
+    },
+    {
+      "id": "electric",
+      "title": "Электрический разряд",
+      "background": "themes/electric/backgrounds/background.svg",
+      "home_mockup": "themes/electric/mockups/home-screen.svg",
+      "event_card": "themes/electric/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/electric/nav/events-normal.svg",
+          "active": "themes/electric/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/electric/nav/tasks-normal.svg",
+          "active": "themes/electric/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/electric/nav/chat-normal.svg",
+          "active": "themes/electric/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/electric/nav/documents-normal.svg",
+          "active": "themes/electric/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/electric/nav/transport-normal.svg",
+          "active": "themes/electric/nav/transport-active.svg"
+        }
+      }
+    },
+    {
+      "id": "drive_monitor",
+      "title": "Drive Monitor",
+      "background": "themes/drive_monitor/backgrounds/background.svg",
+      "home_mockup": "themes/drive_monitor/mockups/home-screen.svg",
+      "event_card": "themes/drive_monitor/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/drive_monitor/nav/events-normal.svg",
+          "active": "themes/drive_monitor/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/drive_monitor/nav/tasks-normal.svg",
+          "active": "themes/drive_monitor/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/drive_monitor/nav/chat-normal.svg",
+          "active": "themes/drive_monitor/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/drive_monitor/nav/documents-normal.svg",
+          "active": "themes/drive_monitor/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/drive_monitor/nav/transport-normal.svg",
+          "active": "themes/drive_monitor/nav/transport-active.svg"
+        }
+      }
+    },
+    {
+      "id": "red_nebula",
+      "title": "Red Nebula",
+      "background": "themes/red_nebula/backgrounds/background.svg",
+      "home_mockup": "themes/red_nebula/mockups/home-screen.svg",
+      "event_card": "themes/red_nebula/components/event-card.svg",
+      "nav": {
+        "events": {
+          "normal": "themes/red_nebula/nav/events-normal.svg",
+          "active": "themes/red_nebula/nav/events-active.svg"
+        },
+        "tasks": {
+          "normal": "themes/red_nebula/nav/tasks-normal.svg",
+          "active": "themes/red_nebula/nav/tasks-active.svg"
+        },
+        "chat": {
+          "normal": "themes/red_nebula/nav/chat-normal.svg",
+          "active": "themes/red_nebula/nav/chat-active.svg"
+        },
+        "documents": {
+          "normal": "themes/red_nebula/nav/documents-normal.svg",
+          "active": "themes/red_nebula/nav/documents-active.svg"
+        },
+        "transport": {
+          "normal": "themes/red_nebula/nav/transport-normal.svg",
+          "active": "themes/red_nebula/nav/transport-active.svg"
+        }
+      }
+    }
+  ]
+}
