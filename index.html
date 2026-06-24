@@ -9,10 +9,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Voice Events</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="nav-liquid.css">
-  <link rel="stylesheet" href="v9-theme.css">
-  <link rel="stylesheet" href="spacing-polish.css">
+  <link rel="stylesheet" href="style.css?v=10.2.0">
+  <link rel="stylesheet" href="nav-liquid.css?v=10.2.0">
+  <link rel="stylesheet" href="v9-theme.css?v=10.2.0">
+  <link rel="stylesheet" href="spacing-polish.css?v=10.2.0">
+  <link rel="stylesheet" href="v10-restart.css?v=10.2.0">
 </head>
 <body class="theme-standard">
   <header class="topbar">
@@ -21,6 +22,7 @@
       <div class="mark">VE</div>
       <div><b>Voice Events</b><small id="subtitle">Журнал событий</small></div>
     </div>
+    <button id="mapGlobe" class="map-globe" aria-label="Карта">🌐</button>
     <button id="avatar" class="avatar">АВ</button>
   </header>
 
@@ -53,6 +55,7 @@
     <div class="composer">
       <button id="rec" class="water-action big">🎙</button>
       <label class="water-action">📷<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
+      <input id="eventText" type="text" placeholder="Введите комментарий...">
       <span id="hint">Нажмите для записи</span>
     </div>
   </main>
@@ -83,6 +86,25 @@
     </section>
   </main>
 
+  <main id="transport" class="screen hidden">
+    <section class="panel">
+      <h1>Транспорт</h1>
+      <div class="list">
+        <div class="event"><div class="ico">▣</div><div><div class="time">ТС-001</div><div class="desc"><b>Онлайн</b><br>Мониторинг транспорта</div></div><div class="right">›</div></div>
+        <div class="event"><div class="ico">◒</div><div><div class="time">Топливо</div><div class="desc"><b>Контроль ДУТ</b><br>Баки и расход</div></div><div class="right">›</div></div>
+        <div class="event"><div class="ico">⌖</div><div><div class="time">Геозоны</div><div class="desc"><b>Объекты</b><br>Контроль присутствия</div></div><div class="right">›</div></div>
+      </div>
+    </section>
+  </main>
+
+  <main id="map" class="screen hidden">
+    <section class="panel">
+      <h1>Карта</h1>
+      <p class="map-note">Инновационный центр Сколково</p>
+      <div class="map-frame"><iframe title="Карта Сколково" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=37.3000,55.6600,37.4300,55.7400&layer=mapnik&marker=55.6980,37.3600"></iframe></div>
+    </section>
+  </main>
+
   <main id="settings" class="screen hidden">
     <section class="panel settings-panel modal-content">
       <h1 class="modal-title">Настройки</h1>
@@ -110,26 +132,22 @@
     </div>
   </div>
 
+  <div id="taskComposer" class="task-composer with-send">
+    <button id="taskMic" class="water-action big task-mic">🎙</button>
+    <label class="water-action">📷<input id="taskQuickPhoto" type="file" accept="image/*" capture="environment" hidden></label>
+    <input id="taskQuickText" type="text" placeholder="Введите текст задачи...">
+    <button id="taskQuickAdd" class="send-task">➤</button>
+  </div>
+
   <nav id="nav" aria-label="Основная навигация">
-    <span class="nav-liquid" aria-hidden="true"></span>
-    <button class="active" data-go="events" aria-label="События">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">◉</span><span class="nav-label">События</span></span></span>
-    </button>
-    <button data-go="tasks" aria-label="Задачи">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">☑</span><span class="nav-label">Задачи</span></span></span>
-    </button>
-    <button data-go="chat" aria-label="Чат">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span><span class="nav-label">Чат</span></span></span>
-    </button>
-    <button data-go="docs" aria-label="Документы">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">▣</span><span class="nav-label">Документы</span></span></span>
-    </button>
-    <button data-go="settings" aria-label="Настройки">
-      <span class="nav-droplet" aria-hidden="true"><span class="nav-lens"><span class="nav-icon">⚙</span><span class="nav-label">Настройки</span></span></span>
-    </button>
+    <button class="active" data-go="events" aria-label="События"><span class="nav-orb"><span class="nav-icon">◷</span></span><span class="nav-label">События</span></button>
+    <button data-go="tasks" aria-label="Задачи"><span class="nav-orb"><span class="nav-icon">☑</span></span><span class="nav-label">Задачи</span></button>
+    <button data-go="chat" aria-label="Чат"><span class="nav-orb"><span class="nav-icon">💬</span><span id="chatBadge" class="nav-badge">3</span></span><span class="nav-label">Чат</span></button>
+    <button data-go="docs" aria-label="Документы"><span class="nav-orb"><span class="nav-icon">▣</span></span><span class="nav-label">Документы</span></button>
+    <button data-go="transport" aria-label="Транспорт"><span class="nav-orb"><span class="nav-icon">▰</span></span><span class="nav-label">Транспорт</span></button>
   </nav>
 
-  <script src="app.js"></script>
-  <script src="v9-theme.js"></script>
+  <script src="app.js?v=10.2.0"></script>
+  <script src="v9-theme.js?v=10.2.0"></script>
 </body>
 </html>
