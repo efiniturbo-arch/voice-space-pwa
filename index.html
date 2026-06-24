@@ -10,156 +10,30 @@
   <meta name="description" content="VORA AI — Operational Intelligence Platform">
   <title>VORA AI</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=18.0.0">
-  <link rel="stylesheet" href="v13-ui.css?v=18.0.0">
-  <link rel="stylesheet" href="v14-direct.css?v=18.0.0">
-  <link rel="stylesheet" href="v15-water-glass.css?v=18.0.0">
-  <link rel="stylesheet" href="v16-filter.css?v=18.0.0">
-  <link rel="stylesheet" href="v17-water-layout.css?v=18.0.0">
-  <link rel="stylesheet" href="v18-fixes.css?v=18.0.0">
+  <link rel="stylesheet" href="style.css?v=19.0.0">
+  <link rel="stylesheet" href="v13-ui.css?v=19.0.0">
+  <link rel="stylesheet" href="v14-direct.css?v=19.0.0">
+  <link rel="stylesheet" href="v15-water-glass.css?v=19.0.0">
+  <link rel="stylesheet" href="v16-filter.css?v=19.0.0">
+  <link rel="stylesheet" href="v17-water-layout.css?v=19.0.0">
+  <link rel="stylesheet" href="v18-fixes.css?v=19.0.0">
+  <link rel="stylesheet" href="v19-orb-actions.css?v=19.0.0">
 </head>
 <body class="theme-standard">
   <div id="startupSplash" class="startup-splash" aria-label="Запуск VORA AI">
     <div class="splash-atmosphere"></div>
-    <div id="splashStage" class="splash-stage">
-      <div class="splash-wordmark">VOROP<span>A</span>EV</div>
-    </div>
+    <div id="splashStage" class="splash-stage"><div class="splash-wordmark">VOROP<span>A</span>EV</div></div>
   </div>
-
-  <header class="topbar">
-    <button id="back" class="back" type="button">‹ Назад</button>
-    <div class="brand">
-      <div class="mark">VA</div>
-      <div><b>VORA AI</b><small id="subtitle">VA · Virtual Assistant</small></div>
-    </div>
-    <button id="avatar" class="avatar" type="button" aria-label="Открыть профиль">АВ</button>
-  </header>
-
-  <aside id="profile" class="profile-menu" aria-hidden="true">
-    <b>Антон Воропаев</b>
-    <small>Администратор</small>
-    <button type="button" data-go="settings">⚙ Настройки</button>
-    <button type="button" data-go="settings">◈ Сменить тему</button>
-  </aside>
-
-  <main id="events" class="screen">
-    <section class="panel">
-      <div class="hero">
-        <div>
-          <h1>TEPA Events</h1>
-          <button id="dateBtn" class="ghost" type="button"><span class="filter-icon">▽</span><span id="today"></span></button>
-        </div>
-        <button id="filterBtn" class="ghost filter-button" type="button"><span class="filter-icon">▽</span>Показать все <span id="badge"></span></button>
-      </div>
-      <div id="eventList" class="list"></div>
-    </section>
-  </main>
-
-  <main id="detail" class="screen hidden">
-    <section class="panel detail">
-      <div class="head">
-        <div><small>TEPA · TECHNICAL EVENTS PROCESS ASSISTANT</small><h1 id="dt"></h1><p id="ds"></p></div>
-        <b id="pill" class="pill"></b>
-      </div>
-      <div id="msgs" class="msgs"></div>
-    </section>
-    <div class="composer">
-      <button id="rec" class="round-action record-action" type="button" aria-label="Записать голос">●</button>
-      <label class="round-action" aria-label="Добавить фото">▧<input id="photo" type="file" accept="image/*" capture="environment" hidden></label>
-      <span id="hint">Нажмите для записи</span>
-    </div>
-  </main>
-
-  <main id="tasks" class="screen hidden">
-    <section class="panel">
-      <h1>Задачи</h1>
-      <textarea id="taskText" placeholder="Напишите задачу..."></textarea>
-      <label class="ghost wide">▧ Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label>
-      <button id="addTask" class="primary wide" type="button">Добавить задачу</button>
-      <div id="taskList" class="list"></div>
-    </section>
-  </main>
-
-  <main id="chat" class="screen hidden">
-    <section class="panel chat">
-      <h1>Чат</h1>
-      <div id="chatList" class="chatlist"></div>
-    </section>
-    <div class="chatbar">
-      <input id="chatText" placeholder="Сообщение..." autocomplete="off">
-      <button id="send" type="button" aria-label="Отправить">➤</button>
-    </div>
-  </main>
-
-  <main id="docs" class="screen hidden">
-    <section class="panel">
-      <div class="section-title"><h1>Документы</h1><label class="upload">＋ Добавить<input id="docIn" type="file" multiple hidden></label></div>
-      <div id="docList" class="docs"></div>
-    </section>
-  </main>
-
-  <main id="transport" class="screen hidden">
-    <section class="panel">
-      <div class="section-title"><div><h1>DTS Assistant</h1><p>Digital Transport Systems Assistant</p></div><span class="live-dot">LIVE</span></div>
-      <div class="transport-grid">
-        <article class="transport-card"><span class="transport-icon">▣</span><div><b>ТС-001 / Буровая</b><small>Онлайн · 12 км/ч</small></div><span>›</span></article>
-        <article class="transport-card"><span class="transport-icon">◒</span><div><b>Топливо</b><small>4 бака · 72%</small></div><span>›</span></article>
-        <article class="transport-card"><span class="transport-icon">⌖</span><div><b>Геозоны</b><small>Объект №23 · в зоне</small></div><span>›</span></article>
-        <article class="transport-card"><span class="transport-icon">!</span><div><b>События транспорта</b><small>Нет критичных уведомлений</small></div><span>›</span></article>
-      </div>
-    </section>
-  </main>
-
-  <main id="settings" class="screen hidden">
-    <section class="panel settings-panel">
-      <div class="section-title"><h1>Настройки</h1><button id="closeSettings" class="icon-button" type="button" aria-label="Закрыть">×</button></div>
-      <div class="form-group"><label>IP server<input id="ip" placeholder="192.168.1.100"></label></div>
-      <div class="cols">
-        <div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div>
-        <div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div>
-      </div>
-      <div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div>
-      <h2>Дизайн приложения</h2>
-      <div id="themeGrid" class="theme-grid" aria-label="Выбор темы"></div>
-      <div class="settings-version">
-        <div><b>VORA AI</b><span>v18.0.0 Water Fixes</span></div>
-        <button id="updateAppButton" class="primary" type="button">Обновить приложение</button>
-      </div>
-    </section>
-  </main>
-
-  <div id="sheet" class="sheet hidden">
-    <div>
-      <h2>Фильтр событий <button id="x" type="button" aria-label="Закрыть">×</button></h2>
-      <div class="form-group"><label>Дата<input id="fd" type="date"></label></div>
-      <div class="form-group">
-        <label>Статус
-          <select id="fs">
-            <option value="all">Все</option>
-            <option value="filled">Заполнено</option>
-            <option value="wait">Ожидает</option>
-            <option value="warning">Внимание</option>
-            <option value="danger">Просрочено</option>
-          </select>
-        </label>
-      </div>
-      <div class="form-actions"><button id="reset" class="ghost" type="button">Сбросить</button><button id="apply" class="primary" type="button">Применить</button></div>
-    </div>
-  </div>
-
-  <nav id="nav" aria-label="Основная навигация">
-    <button class="active" type="button" data-go="events" aria-label="События"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
-    <button type="button" data-go="tasks" aria-label="Задачи"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
-    <button type="button" data-go="chat" aria-label="Чат"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span><span id="chatBadge" class="nav-badge">1</span></button>
-    <button type="button" data-go="docs" aria-label="Документы"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
-    <button type="button" data-go="transport" aria-label="Транспорт"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
-  </nav>
-
-  <script src="app.js?v=18.0.0"></script>
-  <script src="v13-ui.js?v=18.0.0"></script>
-  <script src="v14-direct.js?v=18.0.0"></script>
-  <script src="v15-sound.js?v=18.0.0"></script>
-  <script src="v16-filter.js?v=18.0.0"></script>
-  <script src="v18-fixes.js?v=18.0.0"></script>
-</body>
-</html>
+  <header class="topbar"><button id="back" class="back" type="button">‹ Назад</button><div class="brand"><div class="mark">VA</div><div><b>VORA AI</b><small id="subtitle">VA · Virtual Assistant</small></div></div><button id="avatar" class="avatar" type="button" aria-label="Открыть профиль">АВ</button></header>
+  <aside id="profile" class="profile-menu" aria-hidden="true"><b>Антон Воропаев</b><small>Администратор</small><button type="button" data-go="settings">⚙ Настройки</button><button type="button" data-go="settings">◈ Сменить тему</button></aside>
+  <main id="events" class="screen"><section class="panel"><div class="hero"><div><h1>TEPA Events</h1><button id="dateBtn" class="ghost" type="button"><span class="filter-icon">▽</span><span id="today"></span></button></div><button id="filterBtn" class="ghost filter-button" type="button"><span class="filter-icon">▽</span>Показать все <span id="badge"></span></button></div><div id="eventList" class="list"></div></section></main>
+  <main id="detail" class="screen hidden"><section class="panel detail"><div class="head"><div><small>TEPA · TECHNICAL EVENTS PROCESS ASSISTANT</small><h1 id="dt"></h1><p id="ds"></p></div><b id="pill" class="pill"></b></div><div id="msgs" class="msgs"></div></section><div class="composer"><button id="rec" class="round-action record-action" type="button" aria-label="Записать голос">●</button><label class="round-action" aria-label="Добавить фото">▧<input id="photo" type="file" accept="image/*" capture="environment" hidden></label><span id="hint">Нажмите для записи</span></div></main>
+  <main id="tasks" class="screen hidden"><section class="panel"><h1>Задачи</h1><textarea id="taskText" placeholder="Напишите задачу..."></textarea><label class="ghost wide">▧ Прикрепить фото<input id="taskPhoto" type="file" accept="image/*" hidden></label><button id="addTask" class="primary wide" type="button">Добавить задачу</button><div id="taskList" class="list"></div></section></main>
+  <main id="chat" class="screen hidden"><section class="panel chat"><h1>Чат</h1><div id="chatList" class="chatlist"></div></section><div class="chatbar"><input id="chatText" placeholder="Сообщение..." autocomplete="off"><button id="send" type="button" aria-label="Отправить">➤</button></div></main>
+  <main id="docs" class="screen hidden"><section class="panel"><div class="section-title"><h1>Документы</h1><label class="upload">＋ Добавить<input id="docIn" type="file" multiple hidden></label></div><div id="docList" class="docs"></div></section></main>
+  <main id="transport" class="screen hidden"><section class="panel"><div class="section-title"><div><h1>DTS Assistant</h1><p>Digital Transport Systems Assistant</p></div><span class="live-dot">LIVE</span></div><div class="transport-grid"><article class="transport-card"><span class="transport-icon">▣</span><div><b>ТС-001 / Буровая</b><small>Онлайн · 12 км/ч</small></div><span>›</span></article><article class="transport-card"><span class="transport-icon">◒</span><div><b>Топливо</b><small>4 бака · 72%</small></div><span>›</span></article><article class="transport-card"><span class="transport-icon">⌖</span><div><b>Геозоны</b><small>Объект №23 · в зоне</small></div><span>›</span></article><article class="transport-card"><span class="transport-icon">!</span><div><b>События транспорта</b><small>Нет критичных уведомлений</small></div><span>›</span></article></div></section></main>
+  <main id="settings" class="screen hidden"><section class="panel settings-panel"><div class="section-title"><h1>Настройки</h1><button id="closeSettings" class="icon-button" type="button" aria-label="Закрыть">×</button></div><div class="form-group"><label>IP server<input id="ip" placeholder="192.168.1.100"></label></div><div class="cols"><div class="form-group"><label>Часы<input id="hh" type="number" min="0"></label></div><div class="form-group"><label>Минуты<input id="mm" type="number" min="0" max="59"></label></div></div><div class="form-group"><label class="switch">Уведомления<input id="notify" type="checkbox"></label></div><h2>Дизайн приложения</h2><div id="themeGrid" class="theme-grid" aria-label="Выбор темы"></div><div class="settings-version"><div><b>VORA AI</b><span>v19.0.0 Orb Actions</span></div><button id="updateAppButton" class="primary" type="button">Обновить приложение</button></div></section></main>
+  <div id="sheet" class="sheet hidden"><div><h2>Фильтр событий <button id="x" type="button" aria-label="Закрыть">×</button></h2><div class="form-group"><label>Дата<input id="fd" type="date"></label></div><div class="form-group"><label>Статус<select id="fs"><option value="all">Все</option><option value="filled">Заполнено</option><option value="wait">Ожидает</option><option value="warning">Внимание</option><option value="danger">Просрочено</option></select></label></div><div class="form-actions"><button id="reset" class="ghost" type="button">Сбросить</button><button id="apply" class="primary" type="button">Применить</button></div></div></div>
+  <nav id="nav" aria-label="Основная навигация"><button class="active" type="button" data-go="events" aria-label="События"></button><button type="button" data-go="tasks" aria-label="Задачи"></button><button type="button" data-go="chat" aria-label="Чат"><span id="chatBadge" class="nav-badge">1</span></button><button type="button" data-go="docs" aria-label="Документы"></button><button type="button" data-go="transport" aria-label="Транспорт"></button></nav>
+  <script src="app.js?v=19.0.0"></script><script src="v13-ui.js?v=19.0.0"></script><script src="v14-direct.js?v=19.0.0"></script><script src="v15-sound.js?v=19.0.0"></script><script src="v16-filter.js?v=19.0.0"></script><script src="v18-fixes.js?v=19.0.0"></script><script src="v19-orb-actions.js?v=19.0.0"></script>
+</body></html>
