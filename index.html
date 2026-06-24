@@ -10,10 +10,11 @@
   <meta name="description" content="VORA AI — Operational Intelligence Platform">
   <title>VORA AI</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=15.0.0">
-  <link rel="stylesheet" href="v13-ui.css?v=15.0.0">
-  <link rel="stylesheet" href="v14-direct.css?v=15.0.0">
-  <link rel="stylesheet" href="v15-water-glass.css?v=15.0.0">
+  <link rel="stylesheet" href="style.css?v=16.0.0">
+  <link rel="stylesheet" href="v13-ui.css?v=16.0.0">
+  <link rel="stylesheet" href="v14-direct.css?v=16.0.0">
+  <link rel="stylesheet" href="v15-water-glass.css?v=16.0.0">
+  <link rel="stylesheet" href="v16-filter.css?v=16.0.0">
 </head>
 <body class="theme-standard">
   <div id="startupSplash" class="startup-splash" aria-label="Запуск VORA AI">
@@ -44,9 +45,9 @@
       <div class="hero">
         <div>
           <h1>TEPA Events</h1>
-          <button id="dateBtn" class="ghost" type="button">▣ <span id="today"></span></button>
+          <button id="dateBtn" class="ghost" type="button"><span class="filter-icon">▽</span><span id="today"></span></button>
         </div>
-        <button id="filterBtn" class="ghost filter-button" type="button">▽ Фильтр <span id="badge"></span></button>
+        <button id="filterBtn" class="ghost filter-button" type="button"><span class="filter-icon">▽</span>Показать все <span id="badge"></span></button>
       </div>
       <div id="eventList" class="list"></div>
     </section>
@@ -119,7 +120,7 @@
       <h2>Дизайн приложения</h2>
       <div id="themeGrid" class="theme-grid" aria-label="Выбор темы"></div>
       <div class="settings-version">
-        <div><b>VORA AI</b><span>v15.0.0 Water Glass</span></div>
+        <div><b>VORA AI</b><span>v16.0.0 Filter Split</span></div>
         <button id="updateAppButton" class="primary" type="button">Обновить приложение</button>
       </div>
     </section>
@@ -152,9 +153,10 @@
     <button type="button" data-go="transport" aria-label="Транспорт"><span class="v13-nav-art"><img class="v13-nav-normal" alt=""><img class="v13-nav-active" alt=""></span></button>
   </nav>
 
-  <script src="app.js?v=15.0.0"></script>
-  <script src="v13-ui.js?v=15.0.0"></script>
-  <script src="v14-direct.js?v=15.0.0"></script>
-  <script src="v15-sound.js?v=15.0.0"></script>
+  <script src="app.js?v=16.0.0"></script>
+  <script src="v13-ui.js?v=16.0.0"></script>
+  <script src="v14-direct.js?v=16.0.0"></script>
+  <script src="v15-sound.js?v=16.0.0"></script>
+  <script src="v16-filter.js?v=16.0.0"></script>
 </body>
 </html>
